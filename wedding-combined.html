@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claudia & Ruben — 20 June 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Serif+Display:ital@0;1&family=Josefin+Sans:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:       #1a1814;
+    --ink-soft:  #3a3630;
+    --blue:      #4a7fa5;
+    --blue-pale: #c8dde9;
+    --blue-deep: #1e4a68;
+    --gold:      #c4956a;
+    --gold-pale: #f0e6d6;
+    --cream:     #faf8f4;
+    --warm-mid:  #e8e2d9;
+    --muted:     #8a8480;
+    --white:     #ffffff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Josefin Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ══════════════════════════════════════
+     NAVIGATION
+  ══════════════════════════════════════ */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(26,24,20,0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(74,127,165,0.2);
+    height: 60px;
+    display: flex;
+    align-items: center;
+  }
+  .nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav-brand {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 20px;
+    color: var(--white);
+    cursor: pointer;
+    letter-spacing: 0.01em;
+  }
+  .nav-brand em { color: var(--blue); font-style: normal; }
+  .nav-links {
+    display: flex;
+    gap: 0;
+  }
+  .nav-links a {
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 0 18px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    transition: color 0.2s;
+    border-bottom: 2px solid transparent;
+  }
+  .nav-links a:hover { color: var(--white); }
+  .nav-links a.active { color: var(--white); border-bottom-color: var(--blue); }
+
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 8px;
+  }
+  .nav-hamburger span {
+    display: block; width: 22px; height: 1.5px; background: var(--muted); transition: 0.3s;
+  }
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 60px; left: 0; right: 0;
+    background: rgba(26,24,20,0.98);
+    z-index: 99;
+    padding: 16px 32px 24px;
+    border-bottom: 1px solid rgba(74,127,165,0.2);
+  }
+  .mobile-menu.open { display: block; }
+  .mobile-menu a {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    transition: color 0.2s;
+  }
+  .mobile-menu a:hover { color: var(--white); }
+
+  @media (max-width: 700px) {
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+  }
+
+  /* ══════════════════════════════════════
+     HERO — Option 3 editorial, blue accent
+  ══════════════════════════════════════ */
+  #home {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    overflow: hidden;
+  }
+  .hero-img {
+    position: absolute;
+    inset: 0;
+    background-image: url('IMG_6546.jpeg');
+    background-size: cover;
+    background-position: center 20%;
+    filter: brightness(0.55) saturate(0.8);
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      rgba(26,24,20,0.88) 0%,
+      rgba(26,24,20,0.30) 55%,
+      rgba(26,24,20,0.05) 100%
+    );
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 10vw;
+    padding-top: 60px;
+  }
+  .hero-eyebrow {
+    font-size: 9px;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--blue);
+  }
+  .hero-names {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(64px, 9vw, 110px);
+    font-style: italic;
+    color: var(--white);
+    line-height: 0.9;
+    letter-spacing: -0.01em;
+    margin-bottom: 28px;
+  }
+  .hero-names em {
+    font-style: normal;
+    color: var(--blue);
+  }
+  .hero-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255,255,255,0.07);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(74,127,165,0.35);
+    padding: 10px 18px;
+    width: fit-content;
+  }
+  .hero-badge span {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+  }
+  .hero-badge .dot { color: var(--blue); font-size: 6px; }
+  .hero-cta {
+    margin-top: 36px;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--blue);
+    color: var(--white);
+    font-size: 9px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--blue-deep); transform: translateX(2px); }
+  .btn-primary .arrow { font-size: 14px; }
+
+  /* ══════════════════════════════════════
+     SHARED SECTION STYLES
+  ══════════════════════════════════════ */
+  section {
+    padding: 100px 0;
+  }
+  .section-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+  .section-header {
+    margin-bottom: 60px;
+  }
+  .section-label {
+    font-size: 9px;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--blue);
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(36px, 5vw, 56px);
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .section-title em { color: var(--blue); font-style: normal; }
+  .section-rule {
+    width: 48px;
+    height: 1px;
+    background: var(--blue);
+    margin-top: 20px;
+  }
+
+  /* ══════════════════════════════════════
+     GETTING THERE
+  ══════════════════════════════════════ */
+  #location { background: var(--white); }
+  .location-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  @media (max-width: 700px) { .location-grid { grid-template-columns: 1fr; } }
+  .location-card {
+    border: 1px solid var(--warm-mid);
+    padding: 36px;
+    position: relative;
+  }
+  .location-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 40px;
+    background: var(--blue);
+  }
+  .location-card-num {
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 12px;
+  }
+  .location-card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 24px;
+    font-style: italic;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+  .location-card p {
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    line-height: 1.7;
+    margin-bottom: 4px;
+  }
+  .location-card .venue-name {
+    font-size: 14px;
+    color: var(--ink-soft);
+    font-weight: 400;
+    margin-bottom: 8px;
+    letter-spacing: 0.05em;
+  }
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--blue);
+    color: var(--blue);
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    text-decoration: none;
+    margin-top: 20px;
+    transition: background 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { background: var(--blue); color: var(--white); }
+
+  .parking-list {
+    margin-top: 48px;
+    border-top: 1px solid var(--warm-mid);
+    padding-top: 48px;
+  }
+  .parking-list h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    font-style: italic;
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+  .parking-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--warm-mid);
+  }
+  .parking-item-name {
+    font-size: 13px;
+    color: var(--ink);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+  .parking-item-note {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    margin-top: 3px;
+  }
+  .parking-item a {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--blue);
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+    margin-left: 16px;
+    padding-top: 2px;
+  }
+  .notice-bar {
+    background: var(--blue-pale);
+    border-left: 3px solid var(--blue);
+    padding: 14px 20px;
+    margin-top: 24px;
+  }
+  .notice-bar p {
+    font-size: 12px;
+    color: var(--blue-deep);
+    letter-spacing: 0.04em;
+    line-height: 1.6;
+  }
+
+  /* ══════════════════════════════════════
+     SCHEDULE — Option 2 golden card style
+  ══════════════════════════════════════ */
+  #schedule {
+    background: #2d2416;
+    position: relative;
+    overflow: hidden;
+  }
+  #schedule::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(196,149,106,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  #schedule .section-label { color: var(--gold); }
+  #schedule .section-label::before { background: var(--gold); }
+  #schedule .section-title { color: #fdf6e8; }
+  #schedule .section-title em { color: var(--gold); }
+  #schedule .section-rule { background: var(--gold); }
+
+  .schedule-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 8px;
+  }
+  @media (max-width: 600px) { .schedule-grid { grid-template-columns: 1fr; } }
+
+  .schedule-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(196,149,106,0.2);
+    border-left: 3px solid var(--gold);
+    padding: 28px 28px 24px;
+    position: relative;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .schedule-card:hover {
+    background: rgba(196,149,106,0.07);
+    border-color: rgba(196,149,106,0.4);
+  }
+  .schedule-card-time {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .schedule-card-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    font-style: italic;
+    color: #fdf6e8;
+    margin-bottom: 8px;
+    line-height: 1.1;
+  }
+  .schedule-card-desc {
+    font-size: 12px;
+    color: rgba(253,246,232,0.55);
+    letter-spacing: 0.04em;
+    line-height: 1.65;
+  }
+  .schedule-card-num {
+    position: absolute;
+    top: 20px; right: 20px;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: rgba(196,149,106,0.3);
+    font-weight: 300;
+  }
+
+  .dress-code {
+    margin-top: 40px;
+    border-top: 1px solid rgba(196,149,106,0.15);
+    padding-top: 32px;
+    text-align: center;
+  }
+  .dress-code p {
+    font-size: 13px;
+    color: rgba(253,246,232,0.6);
+    letter-spacing: 0.08em;
+  }
+  .dress-code strong { color: var(--gold); font-weight: 500; }
+
+  /* ══════════════════════════════════════
+     ACCOMMODATIONS
+  ══════════════════════════════════════ */
+  #accommodations { background: var(--cream); }
+  .accommodations-intro {
+    font-size: 14px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    line-height: 1.8;
+    margin-bottom: 48px;
+    max-width: 560px;
+  }
+  .accom-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 0;
+    border: 1px solid var(--warm-mid);
+  }
+  .accom-item {
+    padding: 24px 28px;
+    border-bottom: 1px solid var(--warm-mid);
+    border-right: 1px solid var(--warm-mid);
+    transition: background 0.2s;
+  }
+  .accom-item:hover { background: var(--white); }
+  .accom-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 16px;
+    font-style: italic;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .accom-addr {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.03em;
+    line-height: 1.5;
+    margin-bottom: 6px;
+  }
+  .accom-item a {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--blue);
+    text-decoration: none;
+    text-transform: uppercase;
+    display: block;
+  }
+  .accom-phone {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    margin-top: 3px;
+  }
+
+  /* ══════════════════════════════════════
+     REGISTRY
+  ══════════════════════════════════════ */
+  #gifts { background: var(--white); }
+  .registry-intro {
+    font-size: 14px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    line-height: 1.8;
+    max-width: 580px;
+    margin-bottom: 56px;
+  }
+  .gifts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 32px 24px;
+  }
+  .gift-card { display: flex; flex-direction: column; }
+  .gift-img-wrap {
+    aspect-ratio: 5/6;
+    background: var(--cream);
+    border: 1px solid var(--warm-mid);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow: hidden;
+    position: relative;
+    transition: border-color 0.2s;
+  }
+  .gift-card:hover .gift-img-wrap { border-color: var(--blue-pale); }
+  .gift-img-wrap img {
+    width: 100%; height: 100%;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+    transition: transform 0.3s;
+  }
+  .gift-card:hover .gift-img-wrap img { transform: scale(1.04); }
+  .gift-reserve-btn {
+    position: absolute;
+    bottom: 8px; right: 8px;
+    background: var(--ink);
+    color: var(--white);
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 7px 12px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .gift-reserve-btn:hover { background: var(--blue-deep); }
+  .gift-info { padding: 12px 2px 0; }
+  .gift-price {
+    font-family: 'DM Serif Display', serif;
+    font-size: 16px;
+    color: var(--ink);
+  }
+  .gift-brand {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin: 3px 0;
+  }
+  .gift-name {
+    font-size: 12px;
+    color: var(--ink-soft);
+    line-height: 1.4;
+  }
+  .gift-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--blue);
+    text-decoration: none;
+    text-transform: uppercase;
+    margin-top: 6px;
+    transition: color 0.2s;
+  }
+  .gift-link:hover { color: var(--blue-deep); }
+
+  /* ══════════════════════════════════════
+     MODAL
+  ══════════════════════════════════════ */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(26,24,20,0.75);
+    backdrop-filter: blur(6px);
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: var(--white);
+    width: 100%;
+    max-width: 640px;
+    position: relative;
+    animation: modalIn 0.25s ease;
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .modal-close {
+    position: absolute;
+    top: 16px; right: 16px;
+    background: none; border: none;
+    font-size: 18px; cursor: pointer;
+    color: var(--muted);
+    width: 32px; height: 32px;
+    display: flex; align-items: center; justify-content: center;
+    transition: color 0.2s;
+  }
+  .modal-close:hover { color: var(--ink); }
+  .modal-inner { padding: 40px; }
+  .modal-product {
+    display: flex;
+    gap: 24px;
+    padding-bottom: 28px;
+    margin-bottom: 28px;
+    border-bottom: 1px solid var(--warm-mid);
+  }
+  .modal-img {
+    width: 120px;
+    height: 140px;
+    background: var(--cream);
+    border: 1px solid var(--warm-mid);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+  }
+  .modal-img img { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; }
+  .modal-product-info { flex: 1; }
+  .modal-product-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 6px;
+  }
+  .modal-product-brand {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 8px;
+  }
+  .modal-product-price {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    color: var(--ink-soft);
+    margin-bottom: 12px;
+  }
+  .modal-product-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--blue);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .modal-product-link:hover { color: var(--blue-deep); }
+  .modal-form-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    font-style: italic;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .modal-form-desc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.7;
+    letter-spacing: 0.03em;
+    margin-bottom: 20px;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+  .modal-input {
+    width: 100%;
+    border: 1px solid var(--warm-mid);
+    padding: 12px 14px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    color: var(--ink);
+    background: var(--cream);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .modal-input:focus { border-color: var(--blue); background: var(--white); }
+  .modal-textarea {
+    width: 100%;
+    border: 1px solid var(--warm-mid);
+    padding: 12px 14px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    color: var(--ink);
+    background: var(--cream);
+    resize: none;
+    outline: none;
+    transition: border-color 0.2s;
+    margin-bottom: 16px;
+    display: block;
+  }
+  .modal-textarea:focus { border-color: var(--blue); background: var(--white); }
+  .btn-submit {
+    width: 100%;
+    background: var(--blue);
+    color: var(--white);
+    border: none;
+    padding: 15px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn-submit:hover { background: var(--blue-deep); }
+  .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+  .modal-success {
+    text-align: center;
+    padding: 48px 24px;
+  }
+  .modal-success-icon {
+    width: 56px; height: 56px;
+    background: #e8f4e8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 24px;
+    color: #4a8a4a;
+  }
+  .modal-success h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    font-style: italic;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .modal-success p {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    line-height: 1.7;
+  }
+
+  /* ══════════════════════════════════════
+     FOOTER
+  ══════════════════════════════════════ */
+  footer {
+    background: var(--ink);
+    padding: 64px 40px;
+    text-align: center;
+  }
+  .footer-names {
+    font-family: 'DM Serif Display', serif;
+    font-size: 36px;
+    font-style: italic;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .footer-names em { color: var(--blue); font-style: normal; }
+  .footer-date {
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+  .footer-rule {
+    width: 32px;
+    height: 1px;
+    background: var(--blue);
+    margin: 0 auto 20px;
+  }
+  .footer-tagline {
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.12em;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-brand" onclick="scrollTo('home')">Claudia &amp; <em>Ruben</em></div>
+    <div class="nav-links">
+      <a href="#home" class="active">Home</a>
+      <a href="#location">Getting There</a>
+      <a href="#accommodations">Accommodation</a>
+      <a href="#schedule">Schedule</a>
+      <a href="#gifts">Registry</a>
+    </div>
+    <div class="nav-hamburger" onclick="toggleMenu()" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home" onclick="toggleMenu()">Home</a>
+  <a href="#location" onclick="toggleMenu()">Getting There</a>
+  <a href="#accommodations" onclick="toggleMenu()">Accommodation</a>
+  <a href="#schedule" onclick="toggleMenu()">Schedule</a>
+  <a href="#gifts" onclick="toggleMenu()">Registry</a>
+</div>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Together with their families</div>
+    <h1 class="hero-names">Claudia<br>&amp; <em>Ruben</em></h1>
+    <div class="hero-meta">
+      <div class="hero-badge">
+        <span>20 June 2026</span>
+        <span class="dot">●</span>
+        <span>13:30</span>
+        <span class="dot">●</span>
+        <span>Les Amandiers, Lavigny</span>
+      </div>
+    </div>
+    <div class="hero-cta">
+      <a href="#location" class="btn-primary">View Details <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- GETTING THERE -->
+<section id="location">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-label">Lavigny, Switzerland</div>
+      <h2 class="section-title">Getting <em>There</em></h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="location-grid">
+      <div class="location-card">
+        <div class="location-card-num">01 — Ceremony</div>
+        <h3>Les Amandiers</h3>
+        <p class="venue-name">Eglise Evangélique Les Amandiers</p>
+        <p>Rte du Vignoble 27</p>
+        <p>1175 Lavigny</p>
+        <a href="https://www.google.com/maps/search/?api=1&query=Eglise+Evangélique+Les+Amandiers+Lavigny" target="_blank" class="btn-outline">Open in Maps →</a>
+      </div>
+      <div class="location-card">
+        <div class="location-card-num">02 — Reception</div>
+        <h3>Domaine des Remans</h3>
+        <p class="venue-name">Domaine des Remans</p>
+        <p>Chem. de Renolly 14</p>
+        <p>1175 Lavigny</p>
+        <a href="https://www.google.com/maps/search/?api=1&query=Domaine+des+Remans+Lavigny" target="_blank" class="btn-outline">Open in Maps →</a>
+      </div>
+    </div>
+
+    <div class="parking-list">
+      <h3>Parking &amp; Arrival</h3>
+      <div class="parking-item">
+        <div>
+          <div class="parking-item-name">At the Church</div>
+          <div class="parking-item-note">15 spots available</div>
+        </div>
+        <a href="https://maps.google.com/?q=Eglise+Evangélique+Les+Amandiers+Lavigny" target="_blank">View on Maps →</a>
+      </div>
+      <div class="parking-item">
+        <div>
+          <div class="parking-item-name">Domaine des Remans</div>
+          <div class="parking-item-note">10 spots available</div>
+        </div>
+        <a href="https://maps.google.com/?q=Domaine+des+Remans+Lavigny" target="_blank">View on Maps →</a>
+      </div>
+      <div class="parking-item">
+        <div>
+          <div class="parking-item-name">The School</div>
+          <div class="parking-item-note">Blue Disk zone (max 3 hours)</div>
+        </div>
+        <a href="https://www.google.com/maps?q=place_id:ChIJV5JX8m1IjEcR3aOgEnWAo7E" target="_blank">View on Maps →</a>
+      </div>
+      <div class="notice-bar">
+        <p>Please arrive 15–20 minutes before the ceremony begins to find your seat.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section id="schedule">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-label">20 June 2026</div>
+      <h2 class="section-title">The <em>Day</em></h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="schedule-grid">
+      <div class="schedule-card">
+        <div class="schedule-card-num">01</div>
+        <div class="schedule-card-time">13:30</div>
+        <div class="schedule-card-title">The Ceremony</div>
+        <div class="schedule-card-desc">We exchange our vows at Les Amandiers.</div>
+      </div>
+      <div class="schedule-card">
+        <div class="schedule-card-num">02</div>
+        <div class="schedule-card-time">14:30</div>
+        <div class="schedule-card-title">Garden Apéro</div>
+        <div class="schedule-card-desc">Drinks, hors d'oeuvres, and photos in the sunshine.</div>
+      </div>
+      <div class="schedule-card">
+        <div class="schedule-card-num">03</div>
+        <div class="schedule-card-time">16:30</div>
+        <div class="schedule-card-title">Drinks at the Domaine</div>
+        <div class="schedule-card-desc">Toasts overlooking the vineyards and the lake.</div>
+      </div>
+      <div class="schedule-card">
+        <div class="schedule-card-num">04</div>
+        <div class="schedule-card-time">18:00</div>
+        <div class="schedule-card-title">Dinner & Reception</div>
+        <div class="schedule-card-desc">A cozy evening of dining, speeches, and celebration.</div>
+      </div>
+    </div>
+    <div class="dress-code">
+      <p><strong>Dress Code:</strong> We invite you to wear your favourite outfit to celebrate with us!</p>
+    </div>
+  </div>
+</section>
+
+<!-- ACCOMMODATIONS -->
+<section id="accommodations">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-label">Nearby Hotels</div>
+      <h2 class="section-title">Where to <em>Stay</em></h2>
+      <div class="section-rule"></div>
+    </div>
+    <p class="accommodations-intro">Here are several accommodation options near the venue for your convenience.</p>
+    <div class="accom-grid">
+      <div class="accom-item"><div class="accom-name">Auberge d'Etoy</div><div class="accom-addr">Pl. de la Saint-Jaques 2, 1163 Etoy</div><a href="https://auberge-hotel-etoy.ch" target="_blank">auberge-hotel-etoy.ch →</a><div class="accom-phone">021 808 50 67</div></div>
+      <div class="accom-item"><div class="accom-name">Zogbi Hospitality Aubonne</div><div class="accom-addr">Pl. de Bourg-de-Four 2, 1170 Aubonne</div><a href="https://booking.com" target="_blank">booking.com →</a><div class="accom-phone">021 808 08 58</div></div>
+      <div class="accom-item"><div class="accom-name">Afterwork Hotel</div><div class="accom-addr">Route Suisse 26, 1030 Etoy</div><a href="https://afterworkhotel.ch" target="_blank">afterworkhotel.ch →</a><div class="accom-phone">+41 21 552 50 50</div></div>
+      <div class="accom-item"><div class="accom-name">Eh! Toi Self Motel</div><div class="accom-addr">Route Suisse 8, 1163 Etoy</div><a href="https://selfmotel.ch" target="_blank">selfmotel.ch →</a><div class="accom-phone">+41 21 807 00 00</div></div>
+      <div class="accom-item"><div class="accom-name">Auberge des Grands Bois</div><div class="accom-addr">Route de l'Etraz 5, 1164 Buchillon</div><a href="https://grandsbois.ch" target="_blank">grandsbois.ch →</a><div class="accom-phone">+41 21 807 31 16</div></div>
+      <div class="accom-item"><div class="accom-name">Hôtel La Longeraie</div><div class="accom-addr">Route de la Longeraie 24, 1110 Morges</div><a href="https://lalongeraie.ch" target="_blank">lalongeraie.ch →</a><div class="accom-phone">+41 21 804 12 12</div></div>
+      <div class="accom-item"><div class="accom-name">La Maison d'Igor</div><div class="accom-addr">Rue Louis-de-Savoie 54, 1110 Morges</div><a href="https://maison-igor.ch" target="_blank">maison-igor.ch →</a><div class="accom-phone">+41 21 803 06 06</div></div>
+      <div class="accom-item"><div class="accom-name">Romantik Hotel Mont-Blanc</div><div class="accom-addr">Quai du Mont-Blanc 1, 1110 Morges</div><a href="https://hotel-mont-blanc.ch" target="_blank">hotel-mont-blanc.ch →</a><div class="accom-phone">+41 21 802 60 30</div></div>
+      <div class="accom-item"><div class="accom-name">Hostellerie Le Petit Manoir</div><div class="accom-addr">Av. Ignace Paderewski 8, 1110 Morges</div><a href="https://lepetitmanoir.ch" target="_blank">lepetitmanoir.ch →</a><div class="accom-phone">+41 21 804 12 00</div></div>
+      <div class="accom-item"><div class="accom-name">Hôtel de la Couronne</div><div class="accom-addr">Grand-Rue 90, 1110 Morges</div><a href="https://couronne-morges.ch" target="_blank">couronne-morges.ch →</a><div class="accom-phone">+41 21 804 13 40</div></div>
+      <div class="accom-item"><div class="accom-name">Lodges Hotel Morges</div><div class="accom-addr">Avenue de la Gottaz 32, 1110 Morges</div><a href="https://lodges-hotel-morges.ch" target="_blank">lodges-hotel-morges.ch →</a><div class="accom-phone">+41 21 804 16 00</div></div>
+      <div class="accom-item"><div class="accom-name">L'Hôtel by Hostellerie du Château</div><div class="accom-addr">Grand-Rue 16, 1180 Rolle</div><a href="https://lhotel-rolle.com" target="_blank">lhotel-rolle.com →</a><div class="accom-phone">+41 21 822 32 62</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- REGISTRY -->
+<section id="gifts">
+  <div class="section-inner" style="max-width:1200px;">
+    <div class="section-header">
+      <div class="section-label">Wish List</div>
+      <h2 class="section-title">Gift <em>Registry</em></h2>
+      <div class="section-rule"></div>
+    </div>
+    <p class="registry-intro">Your presence at our wedding is truly the greatest gift of all. However, if you wish to honour us with a gift, we have curated a list of ideas for your convenience.</p>
+    <div class="gifts-grid" id="giftsGrid"></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-names">Claudia &amp; <em>Ruben</em></div>
+  <div class="footer-date">20 June 2026 · Les Amandiers · Lavigny</div>
+  <div class="footer-rule"></div>
+  <div class="footer-tagline">We can't wait to celebrate with you!</div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="handleOverlayClick(event)">
+  <div class="modal" id="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-inner" id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+const GIFTS = [
+  { id:1, category:"Bedroom & Bath", brand:"Manor", name:"Kunstfell Nordelva 220x260cm", price:"CHF 80.00", image:"https://i8.amplience.net/i/manor/10003694884_01?fmt=auto&h=920&w=920", link:"https://www.manor.ch/de/p/10003694884" },
+  { id:2, category:"Bedroom & Bath", brand:"Swiss Dream by billerbeck", name:"Swiss Dream CLC 90 Pillow 65×100 cm", price:"CHF 84.40", image:"https://www.nettoshop.ch/medias/IP317405.webp?context=bWFzdGVyfGNvbW1vbl9wcm9kdWN0fDI4NTZ8aW1hZ2Uvd2VicHxZMjl0Ylc5dUwzQnliMlIxWTNRdmFIY3dMMmhrTlM4NU16ZzFNalU0Tmpnd016VXdMbmRsWW5BfDljYmM2NGU2YjI4NzcwMDQyZWNjYzliNDVjMGIwZjIxMjFhZjYwNDE5NGI0MDU5NjcwMWZmNmVlN2JhZDM5OWY", link:"https://www.nettoshop.ch/wohnen/buero-schlafzimmer/kissen-kopfkissen/swiss-dream-clc-90-kissen-65-x-100-cm/p/IP317405" },
+  { id:3, price:"CHF 219", brand:"La Redoute Intérieurs", name:"Cotton Satin Duvet Cover 240×240 cm – Winterblues", category:"Bedroom & Bath", image:"https://cdn.laredoute.com/cdn-cgi/image/width=1200,height=1200,fit=pad,dpr=1/products/9/8/8/988cd9a5720e68dcb1b8b130da4d58b8.jpg", link:"https://www.laredoute.ch/en/ppdp/prod-351215346.aspx" },
+  { id:4, price:"CHF 18.16", brand:"La Redoute Intérieurs", name:"Victor Plain Washed Cotton Sateen Pillow Cases 65×100 cm", category:"Bedroom & Bath", image:"https://cdn.laredoute.com/cdn-cgi/image/width=1200,height=1200,fit=pad,dpr=1/products/1/a/4/1a4c2bdf2b229db2e58e26336946b2da.jpg", link:"https://www.laredoute.ch/en/ppdp/prod-350319849.aspx" },
+  { id:5, price:"CHF 45.46", brand:"La Redoute Intérieurs", name:"Victor Plain Washed Cotton Satin Fitted Sheet 160×200 cm", category:"Bedroom & Bath", image:"https://cdn.laredoute.com/cdn-cgi/image/width=1200,height=1200,fit=pad,dpr=1/products/c/0/2/c023b92129827d89cafdfeaf30ffebbd.jpg", link:"https://www.laredoute.ch/en/ppdp/prod-350319826.aspx" },
+  { id:6, category:"Furniture & Home", brand:"IKEA", name:"HOVET Mirror Aluminium 78×196 cm", price:"CHF 149", image:"https://www.ikea.com/ch/en/images/products/hovet-mirror-aluminium__0633569_pe695903_s5.jpg?f=xl", link:"https://www.ikea.com/ch/en/p/hovet-mirror-aluminium-50038213/" },
+  { id:7, price:"CHF 119.90", brand:"home24", name:"Bürostuhl Kolumbus – Office Chair (Black)", category:"Furniture & Home", image:"https://cdn1.home24.net/images/media/catalog/product/600x600/jpg/c/3/c390366a504648d0a808a7be8e92ee42.avif", link:"https://www.home24.ch/de/produkt/buerostuhl-kolumbus-schwarz-fcde" },
+  { id:8, price:"CHF 239.95", brand:"home24", name:"Eckschreibtisch Pirie – Corner Desk Oak/Larch White", category:"Furniture & Home", image:"https://cdn1.home24.net/images/media/catalog/product/600x600/png/-/1/-1000265994-210511-12435000060-IMAGE-P000000001000265994.avif", link:"https://www.home24.ch/de/produkt/eckschreibtisch-pirie-eiche-hell-dekor-laerche-weiss-dekor" },
+  { id:9, price:"CHF 205.45", brand:"Campingaz", name:"2 Series Classic L Gas BBQ (7.50 kW)", category:"Kitchen & Cooking", image:"https://static01.galaxus.com/productimages/6/2/4/5/9/5/2/5/2/2/1/0/5/1/0/6/9/4/3/e66e13b1-2e8c-4c96-9f95-6086b63aa9b0_cropped.jpg_720.avif", link:"https://www.galaxus.ch/en/s4/product/campingaz-2-series-classic-l-750-kw-gas-bbqs-2447213" },
+  { id:10, price:"CHF 103.95", brand:"Bestron", name:"ABP604 XXL Table Grill / Plancha", category:"Kitchen & Cooking", image:"https://www.fust.ch/_next/image?url=https%3A%2F%2Fapi-nettoshop-prod-external.coop.ch%2Fmedias%2FIP274091.jpg%3Fcontext%3DbWFzdGVyfGNvbW1vbl9wcm9kdWN0fDI3ODgwfGltYWdlL2pwZWd8WTI5dGJXOXVMM0J5YjJSMVkzUXZhSEk1TDJnd055ODVNRFl4TmpVMU1UZ3pNemt3TG1wd1p3fDdhOWE4NDZhODgyNzkxOTUwNzI3YWQ4ZWU0YmY1YWQ2OGU1YjFiNjE2YjQzODk0ZTFkMjFiYmJmYWI5YmU3MTg&w=768&q=75", link:"https://www.fust.ch/fr/appareils-de-cuisine/gril-de-table-appareil-a-raclette-appareil-a-fondue/appareil-a-raclette/bestron-abp604-xxl-/p/10692706" },
+  { id:11, price:"CHF 199", brand:"KUHN RIKON", name:"Culinary Fiveply Cookware Set (4 pcs)", category:"Kitchen & Cooking", image:"https://i8.amplience.net/i/manor/10003461801_01?fmt=auto&h=920&w=920", link:"https://www.manor.ch/de/p/10003461801" },
+  { id:12, price:"CHF 44.90", brand:"Ariete", name:"Vintage Kettle ARI-2877-BL 1.7L (Blue)", category:"Kitchen & Cooking", image:"https://www.interdiscount.ch/static-shops/products/720/d1ebbd9f957f0a104126a707835dc0b78be3.jpg", link:"https://www.interdiscount.ch/de/product/ariete-vintage-ari-2877-bl-1-7-l-edelstahl-beige-blau-0001435083" },
+  { id:13, price:"CHF 264", brand:"De'Longhi", name:"Dedica Bundle", category:"Kitchen & Cooking", image:"https://static01.galaxus.com/productimages/5/1/2/1/5/7/6/8/ezgif-3-38712ce90683.jpg_720.avif", link:"https://www.galaxus.ch/en/s2/product/delonghi-dedica-bundle-espresso-machines-17282859" },
+  { id:14, price:"CHF 14.95", brand:"Manor", name:"Coffee Mug \"Jade\" 360 ml", category:"Kitchen & Cooking", image:"https://i8.amplience.net/i/manor/10003750688_01?fmt=auto&h=920&w=920", link:"https://www.manor.ch/de/p/10003750688" },
+  { id:15, price:"CHF 53.50", brand:"Continenta", name:"Wooden Cutting Board – Olive Wood, 34×22 cm", category:"Kitchen & Cooking", image:"https://static01.galaxus.com/productimages/5/4/9/5/9/1/4/5/3/1/2/5/0/6/2/3/9/8/0/7fb1af27-d958-4b29-8406-7267a31160c6_cropped.jpg_720.avif", link:"https://www.galaxus.ch/en/s2/product/continenta-cutting-board-olive-wood-chopping-boards-6055852" },
+  { id:18, price:"CHF 26.70", brand:"Various", name:"Cookbook – Ottolenghi COMFORT", category:"Kitchen & Cooking", image:"https://static01.galaxus.com/productimages/7/8/4/8/1/6/2/5/4/3/3/1/2/5/7/3/7/4/1/47088411-c31b-4e11-bf18-f20ab12db6fe.jpg_720.avif", link:"https://www.galaxus.ch/en/s18/product/ottolenghiottolenghi-comfort-english-helen-goh-yotam-ottolenghi-2024-guidebooks-48052277" },
+  { id:19, price:"CHF 99", brand:"Forge Adour", name:"Knife Set + Board", category:"Kitchen & Cooking", image:"https://static01.galaxus.com/productimages/3/5/7/5/2/6/4/6/8/8/4/4/1/8/6/7/1/1/0/d2b1fd0d-0a6b-4410-99a9-89d2fc2a5615_cropped.jpg_720.avif", link:"https://www.galaxus.ch/en/s2/product/forge-adour-planche-a-decouper-avec-couteaux-2150-cm-kitchen-knives-20526220" },
+  { id:21, price:"CHF 19.95", brand:"SKÄLRYTA", name:"Teapot, clear glass, 1 l", category:"Food & Drinks", image:"https://www.ikea.com/ch/en/images/products/skaelryta-teapot-clear-glass__1450153_pe990253_s5.jpg?f=xl", link:"https://www.ikea.com/ch/en/p/skaelryta-teapot-clear-glass-40609185/" },
+  { id:16, price:"CHF 44.90", brand:"BUTLERS", name:"Tasse COTTAGE 4er-Set", category:"Food & Drinks", image:"https://cdn1.home24.net/images/media/catalog/product/400x400/png/-/1/-1000479222-250219-010-IMAGE-P000000001000479222.avif", link:"https://www.home24.ch/de/tassen/" },
+  { id:23, price:"CHF 37", brand:"WoodWick", name:"White Honey", category:"Wellness & Lifestyle", image:"https://static01.galaxus.com/productimages/4/9/2/2/7/2/4/4/1/0/6/7/9/6/4/1/7/8/019a30b8-af59-71b5-a5ce-2ec960775613_720.avif", link:"https://www.galaxus.ch/en/s14/product/woodwick-white-honey-453-g-scented-candles-11741982" },
+  { id:24, price:"CHF 39.95", brand:"Various", name:"Plant", category:"Wellness & Lifestyle", image:"https://static01.galaxus.com/productimages/5/5/4/3/1/9/5/9/2/6/6/1/1/7/3/6/2/2/5/ce169145-d199-44b3-bedf-5cb1b2a6015a.jpg_720.avif", link:"https://www.galaxus.ch/en/s4/product/feey-grosse-efeutute-45-cm-freshly-repotted-plants-49568829" },
+  { id:28, price:"Voucher", brand:"Galaxus", name:"Galaxus Gift Voucher", category:"Vouchers", image:"https://static01.galaxus.com/productimages/8/3/1/7/5/4/0/5/1/8/4/1/7/8/7/6/7/3/1/019c9e80-3442-740e-a4fa-0880137db8ad_720.avif", link:"https://www.galaxus.ch/de/s1/product/galaxus-digitaler-gutschein-chf-5-gutschein-4697570" },
+  { id:29, price:"Voucher", brand:"Lidl", name:"Lidl Gift Card", category:"Vouchers", image:"https://www.lidl-giftcards.ch/assets/products/giftcard3.png", link:"https://www.lidl-giftcards.ch/de-ch" },
+  { id:30, price:"Voucher", brand:"SWISS", name:"Swiss International Air Lines Voucher", category:"Vouchers", image:"https://www.swiss.com/etc/designs/lx/clientlib-all/vite/img/swiss-logo.svg", link:"https://www.swiss.com/ch/en/book-and-manage/offers/vouchers" },
+  { id:31, price:"Voucher", brand:"SBB", name:"SBB Voucher – Alpine Romance", category:"Vouchers", image:"https://commerce.sbb.ch/media/catalog/product/cache/8589b2490af5cd6ad2ee857e826b74c0/n/g/ngw_tu_gutscheinkarte_vs_neu_mit_chip.jpg", link:"https://commerce.sbb.ch/en/voucher-pt-alpine-romance.html" }
+];
+
+// Render gifts
+const grid = document.getElementById('giftsGrid');
+GIFTS.forEach(g => {
+  grid.innerHTML += `
+    <div class="gift-card">
+      <div class="gift-img-wrap">
+        <img src="${g.image}" alt="${g.name}" loading="lazy" onerror="this.style.opacity=0.2">
+        <button class="gift-reserve-btn" onclick="openModal(${g.id})">Reserve</button>
+      </div>
+      <div class="gift-info">
+        <div class="gift-price">${g.price}</div>
+        <div class="gift-brand">${g.brand}</div>
+        <div class="gift-name">${g.name}</div>
+        <a href="${g.link}" target="_blank" class="gift-link">View product →</a>
+      </div>
+    </div>`;
+});
+
+let activeGift = null;
+let isSent = false;
+
+function openModal(id) {
+  activeGift = GIFTS.find(g => g.id === id);
+  isSent = false;
+  renderModal();
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+  activeGift = null;
+}
+function handleOverlayClick(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModal();
+}
+
+function renderModal() {
+  const g = activeGift;
+  if (isSent) {
+    document.getElementById('modalContent').innerHTML = `
+      <div class="modal-success">
+        <div class="modal-success-icon">✓</div>
+        <h3>Thank you!</h3>
+        <p>Your reservation for "${g.name}" has been recorded.</p>
+      </div>`;
+    return;
+  }
+  document.getElementById('modalContent').innerHTML = `
+    <div class="modal-product">
+      <div class="modal-img"><img src="${g.image}" alt="${g.name}"></div>
+      <div class="modal-product-info">
+        <div class="modal-product-brand">${g.brand}</div>
+        <div class="modal-product-name">${g.name}</div>
+        <div class="modal-product-price">${g.price}</div>
+        <a href="${g.link}" target="_blank" class="modal-product-link">View product page →</a>
+      </div>
+    </div>
+    <div class="modal-form-title">Reserve this gift</div>
+    <div class="modal-form-desc">
+      Enter your details to reserve this item. It can be delivered directly to Rue d'Or 17, 1700 Fribourg, or brought in person on our wedding day.
+    </div>
+    <form id="reserveForm" onsubmit="submitForm(event)">
+      <div class="form-row">
+        <input class="modal-input" name="last_name" type="text" placeholder="Last Name" required>
+        <input class="modal-input" name="first_name" type="text" placeholder="First Name" required>
+      </div>
+      <input class="modal-input" name="user_email" type="email" placeholder="Email Address" required style="width:100%;margin-bottom:12px;display:block;">
+      <textarea class="modal-textarea" name="message" rows="3" placeholder="A short message..."></textarea>
+      <button class="btn-submit" type="submit" id="submitBtn">Reserve & Confirm</button>
+    </form>`;
+}
+
+async function submitForm(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  const formData = new FormData(e.target);
+  formData.append('gift_name', activeGift.name);
+  formData.append('gift_price', activeGift.price);
+  try {
+    const res = await fetch('https://formspree.io/f/xeeldepq', {
+      method: 'POST', body: formData, headers: { Accept: 'application/json' }
+    });
+    if (res.ok) {
+      isSent = true;
+      renderModal();
+      setTimeout(closeModal, 4000);
+    } else {
+      alert('Something went wrong. Please try again.');
+      btn.disabled = false;
+      btn.textContent = 'Reserve & Confirm';
+    }
+  } catch {
+    alert('Something went wrong. Please try again.');
+    btn.disabled = false;
+    btn.textContent = 'Reserve & Confirm';
+  }
+}
+
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+
+// Active nav highlight on scroll
+const sections = ['home','location','schedule','accommodations','gifts'];
+window.addEventListener('scroll', () => {
+  let current = 'home';
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && window.scrollY >= el.offsetTop - 80) current = id;
+  });
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+});
+</script>
+</body>
+</html>
