@@ -967,7 +967,7 @@ function renderModal() {
       </div>`;
     return;
   }
-  document.getElementById('modalContent').innerHTML = `
+  document.getElementById('modalContent').innerHTML = 
     <div class="modal-product">
       <div class="modal-img"><img src="${g.image}" alt="${g.name}"></div>
       <div class="modal-product-info">
@@ -997,7 +997,7 @@ function renderModal() {
       </select>
       <textarea class="modal-textarea" name="message" rows="3" placeholder="A short message..."></textarea>
       <button class="btn-submit" type="submit" id="submitBtn">Reserve & Confirm</button>
-    </form>`;
+    </form>;
 }
 
 async function submitForm(e) {
