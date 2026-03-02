@@ -830,6 +830,27 @@
     color: rgba(255,255,255,0.35);
     letter-spacing: 0.12em;
   }
+
+  /* Add these to your existing CSS */
+
+.footer-contact {
+  margin-top: 16px; /* Adds breathing room below the tagline */
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.35); /* Matches your tagline opacity */
+}
+
+.footer-contact a {
+  color: var(--blue); /* Uses your custom blue from 'Ruben' */
+  text-decoration: none; /* Removes the ugly underline */
+  transition: opacity 0.2s ease;
+  font-weight: 500;
+}
+
+.footer-contact a:hover {
+  opacity: 0.7; /* Gives a subtle "clickable" feel when hovering */
+  text-decoration: underline; /* Optional: adds a clean underline only on hover */
+}
 </style>
 </head>
 <body>
