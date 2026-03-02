@@ -982,7 +982,7 @@ async function submitForm(e) {
   btn.textContent = 'Sending...';
   const formData = new FormData(e.target);
 
-    try {
+  try {
     const res = await fetch('/api/reserve', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -992,7 +992,7 @@ async function submitForm(e) {
         gift_link: activeGift.link,
         gift_image: activeGift.image,
         max: activeGift.max ?? 1,
-        quantity: Number(formData.get('quantity') || 1),
+        quantity: Number(formData.get('quantity') || 1), // NEW
         first_name: formData.get('first_name'),
         last_name: formData.get('last_name'),
         email: formData.get('user_email'),
