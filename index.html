@@ -606,7 +606,7 @@
 <!-- NAVIGATION -->
 <nav>
   <div class="nav-inner">
-    <div class="nav-brand" onclick="scrollTo('home')">Claudia &amp; <em>Ruben</em></div>
+    <div class="nav-brand" onclick="scrollToSection('home')">Claudia &amp; <em>Ruben</em></div>
     <div class="nav-links">
       <a href="#home" class="active">Home</a>
       <a href="#location">Getting There</a>
@@ -1081,8 +1081,39 @@ function toggleMenu() {
 }
 
 // Active nav highlight on scroll
-const sections = ['home','location','schedule','accommodations','gifts','contact'];
-window.addEventListener('scroll', () => {
+// --- Smooth scroll helper (replaces incorrect scrollTo('home')) ---
+function scrollToSection(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// --- Active nav highlight on scroll (safe + complete) ---
+const SECTION_IDS = ['home','location','accommodations','schedule','gifts','contact'];
+const desktopNavLinks = document.querySelectorAll('.nav-links a');
+
+function setActiveLink(sectionId) {
+  desktopNavLinks.forEach(a => {
+    const href = a.getAttribute('href');
+    a.classList.toggle('active', href === `#${sectionId}`);
+  });
+}
+
+function updateActiveSection() {
+  const scrollY = window.scrollY;
   let current = 'home';
-  sections.forEach(id => {
-    const el = document.getElementByI
+
+  for (const id of SECTION_IDS) {
+    const el = document.getElementById(id);
+    if (!el) continue;
+
+    const top = el.offsetTop - 80; // offset for fixed nav
+    if (scrollY >= top) current = id;
+  }
+
+  setActiveLink(current);
+}
+
+window.addEventListener('scroll', updateActiveSection);
+window.addEventListener('load', updateActiveSection);
+</script>
