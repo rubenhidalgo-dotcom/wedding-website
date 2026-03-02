@@ -1126,39 +1126,50 @@ async function loadReservationsTable() {
   `).join('');
 }
 
+async function downloadReservationsCsv() {
+  const token = localStorage.getItem('ADMIN_TOKEN');
+  if (!token) return;
+
+  const res = await fetch('/api/reservations.csv', {
+    headers: { 'X-Admin-Token': token }
+  });
+  if (!res.ok) {
+    alert('Failed to download CSV.');
+    return;
+  }
+
+  const blob = await res.blob();
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'wedding_reservations.csv';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+
+  URL.revokeObjectURL(url);
+}
+
 function scheduleDailyUpdateAt17(updateFn) {
   const now = new Date();
   const next = new Date();
 
-  // Set next run to today at 17:00
   next.setHours(17, 0, 0, 0);
-
-  // If it's already past 17:00 today → schedule tomorrow
-  if (now >= next) {
-    next.setDate(next.getDate() + 1);
-  }
+  if (now >= next) next.setDate(next.getDate() + 1);
 
   const msUntilNextRun = next - now;
 
-  // Run once at next 17:00
   setTimeout(() => {
     updateFn();
-
-    // Then run every 24 hours
     setInterval(updateFn, 24 * 60 * 60 * 1000);
   }, msUntilNextRun);
 }
 
-// Admin table: show + load only if token is present
+// Admin: show + load once, then refresh daily at 17:00
 if (localStorage.getItem('ADMIN_TOKEN')) {
-  // Run once immediately
   loadReservationsTable();
-
-  // Then schedule daily refresh at 17:00
   scheduleDailyUpdateAt17(loadReservationsTable);
-} else {
-  // Optional: ensure hidden if no token
-  document.getElementById('admin').style.display = 'none';
 }
 </script>
 </body>
