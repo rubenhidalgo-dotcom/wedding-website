@@ -3,10 +3,10 @@ const res = await fetch("https://api.mailchannels.net/tx/v1/send", {
   headers: { "content-type": "application/json" },
   body: JSON.stringify({
     personalizations: [
-      { to: [{ email: "info@claudiaetruben.ch" }] }
+      { to: [{ email: "ruben.hidalgo@bluewin.ch" }] }
     ],
     from: {
-      email: "ruben.hidalgo@bluewin.ch",
+      email: "info@claudiaetruben.ch",
       name: "Wedding Website"
     },
     subject: "TEST – Cloudflare MailChannels",
