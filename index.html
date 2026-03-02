@@ -1103,6 +1103,8 @@ GIFTS.forEach(g => {
     </div>`;
 });
 
+loadReservations();
+  
 let activeGift = null;
 let isSent = false;
 
@@ -1167,23 +1169,75 @@ async function submitForm(e) {
   formData.append('gift_name', activeGift.name);
   formData.append('gift_price', activeGift.price);
   try {
-    const res = await fetch('https://formspree.io/f/xeeldepq', {
-      method: 'POST', body: formData, headers: { Accept: 'application/json' }
-    });
+    const res = await fetch('/api/reserve', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    gift: activeGift.name,
+    first_name: formData.get('first_name'),
+    last_name: formData.get('last_name'),
+    email: formData.get('user_email'),
+    message: formData.get('message')
+  })
+});
     if (res.ok) {
-      isSent = true;
-      renderModal();
-      setTimeout(closeModal, 4000);
-    } else {
-      alert('Something went wrong. Please try again.');
-      btn.disabled = false;
-      btn.textContent = 'Reserve & Confirm';
-    }
-  } catch {
+  isSent = true;
+  renderModal();
+  setTimeout(closeModal, 4000);
+
+  // lock immediately on this page too
+  markGiftReserved(activeGift.name);
+
+} else if (res.status === 409) {
+  alert('This gift was just reserved by someone else.');
+  closeModal();
+  markGiftReserved(activeGift.name);
+
+} else {
+  alert('Something went wrong. Please try again.');
+  btn.disabled = false;
+  btn.textContent = 'Reserve & Confirm';
+} catch {
     alert('Something went wrong. Please try again.');
     btn.disabled = false;
     btn.textContent = 'Reserve & Confirm';
   }
+}
+
+  async function loadReservations() {
+  try {
+    const res = await fetch('/api/status');
+    if (!res.ok) return;
+
+    const reserved = await res.json(); // array of gift names
+
+    document.querySelectorAll('.gift-card').forEach(card => {
+      const nameEl = card.querySelector('.gift-name');
+      const btn = card.querySelector('.gift-reserve-btn');
+      if (!nameEl || !btn) return;
+
+      const giftName = nameEl.textContent.trim();
+      if (reserved.includes(giftName)) {
+        btn.textContent = 'Already Reserved';
+        btn.disabled = true;
+      }
+    });
+  } catch {
+    // If the API is temporarily unavailable, we just don't lock buttons.
+  }
+}
+
+function markGiftReserved(giftName) {
+  document.querySelectorAll('.gift-card').forEach(card => {
+    const nameEl = card.querySelector('.gift-name');
+    const btn = card.querySelector('.gift-reserve-btn');
+    if (!nameEl || !btn) return;
+
+    if (nameEl.textContent.trim() === giftName.trim()) {
+      btn.textContent = 'Already Reserved';
+      btn.disabled = true;
+    }
+  });
 }
 
 function toggleMenu() {
@@ -1202,6 +1256,8 @@ window.addEventListener('scroll', () => {
     a.classList.toggle('active', a.getAttribute('href') === '#' + current);
   });
 });
+
+  
 </script>
 </body>
 </html>
