@@ -1174,12 +1174,13 @@ async function submitForm(e) {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        gift: activeGift.name,
-        first_name: formData.get('first_name'),
-        last_name: formData.get('last_name'),
-        email: formData.get('user_email'),
-        message: formData.get('message')
-      })
+      gift: activeGift.name,
+      max: activeGift.max ?? 1,   // 👈 ADD THIS
+      first_name: formData.get('first_name'),
+      last_name: formData.get('last_name'),
+      email: formData.get('user_email'),
+      message: formData.get('message')
+    })
     });
 
     if (res.ok) {
