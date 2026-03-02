@@ -6,7 +6,7 @@ export async function onRequestPost({ request, env }) {
     return new Response("Missing fields", { status: 400 });
   }
 
-  const max = data.max ?? 1;
+const max = Number(data.max ?? 1);
 
 const existingRaw = await env.GIFTS.get(gift);
 const existing = existingRaw ? JSON.parse(existingRaw) : { count: 0 };
