@@ -550,6 +550,35 @@
   .modal-input:focus { border-color: var(--blue); background: var(--white); }
   .modal-textarea { width: 100%; border: 1px solid var(--warm-mid); padding: 12px 14px; font-family: 'Josefin Sans', sans-serif; font-size: 12px; letter-spacing: 0.05em; color: var(--ink); background: var(--cream); resize: none; outline: none; transition: border-color 0.2s; margin-bottom: 16px; display: block; }
   .modal-textarea:focus { border-color: var(--blue); background: var(--white); }
+  .modal-select {
+    width: 100%;
+    border: 1px solid var(--warm-mid);
+    padding: 12px 14px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    color: var(--ink);
+    background: var(--cream);
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a8480' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    cursor: pointer;
+    transition: border-color 0.2s;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .modal-select:focus { border-color: var(--blue); background-color: var(--white); }
+  .modal-field-label {
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 6px;
+  }
   .btn-submit { width: 100%; background: var(--blue); color: var(--white); border: none; padding: 15px; font-family: 'Josefin Sans', sans-serif; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }
   .btn-submit:hover { background: var(--blue-deep); }
   .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
@@ -783,7 +812,7 @@
   <div class="footer-rule"></div>
   <div class="footer-tagline">We can't wait to celebrate with you!</div>
   <div class="footer-contact">
-    Contact: <a href="mailto:info@claudiaetruben.ch">info@claudiaetruben.ch</a>
+    Contact: <a href="/cdn-cgi/l/email-protection#5e373038311e3d323f2b3a373f3b2a2c2b3c3b30703d36"><span class="__cf_email__" data-cfemail="90f9fef6ffd0f3fcf1e5f4f9f1f5e4e2e5f2f5febef3f8">[email&#160;protected]</span></a>
   </div>
 </footer>
 
@@ -795,7 +824,7 @@
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const GIFTS = [
   { id:1, category:"Bedroom & Bath", brand:"Manor", name:"Kunstfell Nordelva 220x260cm", price:"CHF 80.00", image:"https://i8.amplience.net/i/manor/10003694884_01?fmt=auto&h=920&w=920", link:"https://www.manor.ch/de/p/10003694884" },
   { id:2, category:"Bedroom & Bath", brand:"Swiss Dream by billerbeck", name:"Swiss Dream CLC 90 Pillow 65×100 cm", price:"CHF 84.40", image:"https://www.nettoshop.ch/medias/IP317405.webp?context=bWFzdGVyfGNvbW1vbl9wcm9kdWN0fDI4NTZ8aW1hZ2Uvd2VicHxZMjl0Ylc5dUwzQnliMlIxWTNRdmFESTBMMmhrTlM4NU16ZzFNalU0Tmpnd016VXdMbmRsWW5BfDljYmM2NGU2YjI4NzcwMDQyZWNjYzliNDVjMGIwZjIxMjFhZjYwNDE5NGI0MDU5NjcwMWZmNmVlN2JhZDM5OWY", link:"https://www.nettoshop.ch/wohnen/buero-schlafzimmer/kissen-kopfkissen/swiss-dream-clc-90-kissen-65-x-100-cm/p/IP317405" },
@@ -958,6 +987,14 @@ function renderModal() {
         <input class="modal-input" name="first_name" type="text" placeholder="First Name" required>
       </div>
       <input class="modal-input" name="user_email" type="email" placeholder="Email Address" required style="width:100%;margin-bottom:12px;display:block;">
+      <label class="modal-field-label">How many of this item would you like to reserve?</label>
+      <select class="modal-select" name="quantity">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
       <textarea class="modal-textarea" name="message" rows="3" placeholder="A short message..."></textarea>
       <button class="btn-submit" type="submit" id="submitBtn">Reserve & Confirm</button>
     </form>`;
@@ -980,6 +1017,7 @@ async function submitForm(e) {
         gift_link: activeGift.link,
         gift_image: activeGift.image,
         max: activeGift.max ?? 1,
+        quantity: parseInt(formData.get('quantity') || '1'),
         first_name: formData.get('first_name'),
         last_name: formData.get('last_name'),
         email: formData.get('user_email'),
@@ -1047,13 +1085,4 @@ const sections = ['home','location','schedule','accommodations','gifts','contact
 window.addEventListener('scroll', () => {
   let current = 'home';
   sections.forEach(id => {
-    const el = document.getElementById(id);
-    if (el && window.scrollY >= el.offsetTop - 80) current = id;
-  });
-  document.querySelectorAll('.nav-links a').forEach(a => {
-    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
-  });
-});
-</script>
-</body>
-</html>
+    const el = document.getElementByI
