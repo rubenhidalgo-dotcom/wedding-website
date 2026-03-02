@@ -938,7 +938,7 @@ function renderModal() {
       </div>`;
     return;
   }
-  document.getElementById('modalContent').innerHTML = 
+    document.getElementById('modalContent').innerHTML = `
     <div class="modal-product">
       <div class="modal-img"><img src="${g.image}" alt="${g.name}"></div>
       <div class="modal-product-info">
@@ -957,7 +957,9 @@ function renderModal() {
         <input class="modal-input" name="last_name" type="text" placeholder="Last Name" required>
         <input class="modal-input" name="first_name" type="text" placeholder="First Name" required>
       </div>
+
       <input class="modal-input" name="user_email" type="email" placeholder="Email Address" required style="width:100%;margin-bottom:12px;display:block;">
+
       <select class="modal-input" name="quantity" required style="width:100%;margin-bottom:12px;display:block;">
         <option value="" disabled selected>How many of this item would you like to reserve?</option>
         <option value="1">1</option>
@@ -966,9 +968,11 @@ function renderModal() {
         <option value="4">4</option>
         <option value="5">5</option>
       </select>
+
       <textarea class="modal-textarea" name="message" rows="3" placeholder="A short message..."></textarea>
       <button class="btn-submit" type="submit" id="submitBtn">Reserve & Confirm</button>
-    </form>;
+    </form>
+  `;
 }
 
 async function submitForm(e) {
