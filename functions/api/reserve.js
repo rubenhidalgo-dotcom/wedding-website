@@ -35,23 +35,28 @@ await env.GIFTS.put(
     })
   );
 
-  await fetch("https://api.mailchannels.net/tx/v1/send", {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify({
-      personalizations: [{ to: [{ email: "info@claudiaetruben.ch" }] }],
-      from: { email: "noreply@claudiaetruben.ch", name: "Wedding Website" },
-      subject: "🎁 Gift Reserved",
-      content: [{
-        type: "text/plain",
-        value:
-`Gift: ${gift}
+  const mc = await fetch("https://api.mailchannels.net/tx/v1/send", {
+  method: "POST",
+  headers: { "content-type": "application/json" },
+  body: JSON.stringify({
+    personalizations: [{ to: [{ email: "info@claudiaetruben.ch" }] }],
+    from: { email: "noreply@claudiaetruben.ch", name: "Wedding Website" },
+    reply_to: { email, name: `${first_name} ${last_name}` },
+    subject: "🎁 Gift Reserved",
+    content: [{
+      type: "text/plain",
+      value: `Gift: ${gift}
 Name: ${first_name} ${last_name}
 Email: ${email}
 Message: ${message || "—"}`
-      }]
-    })
-  });
+    }]
+  })
+});
 
-  return new Response("OK");
+if (!mc.ok) {
+  const text = await mc.text();
+  return new Response(
+    `MailChannels failed: ${mc.status} ${text}`,
+    { status: 502 }
+  );
 }
