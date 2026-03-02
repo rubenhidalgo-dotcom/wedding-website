@@ -1,7 +1,0 @@
-name = "wedding-website"
-main = "src/index.js"
-compatibility_date = "2024-01-01"
-
-[[kv_namespaces]]
-binding = "GIFTS"
-id = "43f1070496d04245ae24c27a1c8954ac"
