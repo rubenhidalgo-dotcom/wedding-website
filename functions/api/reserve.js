@@ -40,7 +40,7 @@ await env.GIFTS.put(
   headers: { "content-type": "application/json" },
   body: JSON.stringify({
     personalizations: [{ to: [{ email: "info@claudiaetruben.ch" }] }],
-    from: { email: "noreply@claudiaetruben.ch", name: "Wedding Website" },
+    from: { email: "info@claudiaetruben.ch", name: "Wedding Website" },
     reply_to: { email, name: `${first_name} ${last_name}` },
     subject: "🎁 Gift Reserved",
     content: [{
