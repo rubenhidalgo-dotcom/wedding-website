@@ -6,10 +6,23 @@ export async function onRequestPost({ request, env }) {
     return new Response("Missing fields", { status: 400 });
   }
 
-  const existing = await env.GIFTS.get(gift);
-  if (existing) {
-    return new Response("Already reserved", { status: 409 });
-  }
+  const max = data.max ?? 1;
+
+const existingRaw = await env.GIFTS.get(gift);
+const existing = existingRaw ? JSON.parse(existingRaw) : { count: 0 };
+
+if (existing.count >= max) {
+  return new Response("Already reserved", { status: 409 });
+}
+
+await env.GIFTS.put(
+  gift,
+  JSON.stringify({
+    count: existing.count + 1,
+    last: { first_name, last_name, email, message },
+    updated: new Date().toISOString()
+  })
+);
 
   await env.GIFTS.put(
     gift,
