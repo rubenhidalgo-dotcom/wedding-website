@@ -776,6 +776,33 @@
   </div>
 </section>
 
+<section id="admin" style="padding:100px 0; background:#fff; display:none;">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-label">Admin</div>
+      <h2 class="section-title">Reservations <em>Table</em></h2>
+      <div class="section-rule"></div>
+    </div>
+
+    <div style="border:1px solid #e8e2d9; padding:24px; overflow:auto;">
+      <table style="width:100%; border-collapse:collapse; font-size:12px;">
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Gift</th>
+            <th>Qty</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Message</th>
+            <th>Count</th>
+          </tr>
+        </thead>
+        <tbody id="resTbody"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-names">Claudia &amp; <em>Ruben</em></div>
@@ -1067,6 +1094,72 @@ window.addEventListener('scroll', () => {
     a.classList.toggle('active', a.getAttribute('href') === '#' + current);
   });
 });
+
+function escapeHtml(s) {
+  return String(s ?? '').replace(/[&<>"']/g, c => ({
+    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+  }[c]));
+}
+
+async function loadReservationsTable() {
+  const token = localStorage.getItem('ADMIN_TOKEN');
+  if (!token) return;
+
+  document.getElementById('admin').style.display = '';
+
+  const res = await fetch('/api/reservations', {
+    headers: { 'X-Admin-Token': token }
+  });
+  if (!res.ok) return;
+
+  const rows = await res.json();
+  document.getElementById('resTbody').innerHTML = rows.map(r => `
+    <tr>
+      <td>${new Date(r.created_at).toLocaleString()}</td>
+      <td>${escapeHtml(r.gift)}</td>
+      <td>${r.quantity}</td>
+      <td>${escapeHtml(r.first_name + ' ' + r.last_name)}</td>
+      <td>${escapeHtml(r.email)}</td>
+      <td>${escapeHtml(r.message)}</td>
+      <td>${r.current}/${r.max}</td>
+    </tr>
+  `).join('');
+}
+
+function scheduleDailyUpdateAt17(updateFn) {
+  const now = new Date();
+  const next = new Date();
+
+  // Set next run to today at 17:00
+  next.setHours(17, 0, 0, 0);
+
+  // If it's already past 17:00 today → schedule tomorrow
+  if (now >= next) {
+    next.setDate(next.getDate() + 1);
+  }
+
+  const msUntilNextRun = next - now;
+
+  // Run once at next 17:00
+  setTimeout(() => {
+    updateFn();
+
+    // Then run every 24 hours
+    setInterval(updateFn, 24 * 60 * 60 * 1000);
+  }, msUntilNextRun);
+}
+
+// Admin table: show + load only if token is present
+if (localStorage.getItem('ADMIN_TOKEN')) {
+  // Run once immediately
+  loadReservationsTable();
+
+  // Then schedule daily refresh at 17:00
+  scheduleDailyUpdateAt17(loadReservationsTable);
+} else {
+  // Optional: ensure hidden if no token
+  document.getElementById('admin').style.display = 'none';
+}
 </script>
 </body>
 </html>
