@@ -1208,7 +1208,7 @@ async function submitForm(e) {
     const res = await fetch('/api/status');
     if (!res.ok) return;
 
-    const reserved = await res.json(); // array of gift names
+    const status = await res.json(); // { giftName: count }
 
     document.querySelectorAll('.gift-card').forEach(card => {
       const nameEl = card.querySelector('.gift-name');
@@ -1216,14 +1216,22 @@ async function submitForm(e) {
       if (!nameEl || !btn) return;
 
       const giftName = nameEl.textContent.trim();
-      if (reserved.includes(giftName)) {
-        btn.textContent = 'Already Reserved';
+      const gift = GIFTS.find(g => g.name === giftName);
+      if (!gift) return;
+
+      const max = gift.max ?? 1;
+      const count = status[giftName] ?? 0;
+
+      if (count >= max) {
+        btn.textContent = 'Fully Reserved';
         btn.disabled = true;
+      } else if (count > 0) {
+        btn.textContent = `Reserved (${count}/${max})`;
       }
     });
   } catch (err) {
-  // If the API is temporarily unavailable, we just don't lock buttons.
-}
+    // API down → gifts still render
+  }
 }
 
 function markGiftReserved(giftName) {
