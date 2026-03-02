@@ -6,7 +6,7 @@ const res = await fetch("https://api.mailchannels.net/tx/v1/send", {
       { to: [{ email: "info@claudiaetruben.ch" }] }
     ],
     from: {
-      email: "info@claudiaetruben.ch",
+      email: "ruben.hidalgo@bluewin.ch",
       name: "Wedding Website"
     },
     subject: "TEST – Cloudflare MailChannels",
