@@ -606,7 +606,7 @@
 <!-- NAVIGATION -->
 <nav>
   <div class="nav-inner">
-    <div class="nav-brand" onclick="scrollToSection('home')">Claudia &amp; <em>Ruben</em></div>
+    <div class="nav-brand" onclick="scrollTo('home')">Claudia &amp; <em>Ruben</em></div>
     <div class="nav-links">
       <a href="#home" class="active">Home</a>
       <a href="#location">Getting There</a>
@@ -967,7 +967,7 @@ function renderModal() {
       </div>`;
     return;
   }
-  document.getElementById('modalContent').innerHTML = 
+  document.getElementById('modalContent').innerHTML = `
     <div class="modal-product">
       <div class="modal-img"><img src="${g.image}" alt="${g.name}"></div>
       <div class="modal-product-info">
@@ -997,7 +997,7 @@ function renderModal() {
       </select>
       <textarea class="modal-textarea" name="message" rows="3" placeholder="A short message..."></textarea>
       <button class="btn-submit" type="submit" id="submitBtn">Reserve & Confirm</button>
-    </form>;
+    </form>`;
 }
 
 async function submitForm(e) {
@@ -1081,39 +1081,8 @@ function toggleMenu() {
 }
 
 // Active nav highlight on scroll
-// --- Smooth scroll helper (replaces incorrect scrollTo('home')) ---
-function scrollToSection(id) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-
-// --- Active nav highlight on scroll (safe + complete) ---
-const SECTION_IDS = ['home','location','accommodations','schedule','gifts','contact'];
-const desktopNavLinks = document.querySelectorAll('.nav-links a');
-
-function setActiveLink(sectionId) {
-  desktopNavLinks.forEach(a => {
-    const href = a.getAttribute('href');
-    a.classList.toggle('active', href === `#${sectionId}`);
-  });
-}
-
-function updateActiveSection() {
-  const scrollY = window.scrollY;
+const sections = ['home','location','schedule','accommodations','gifts','contact'];
+window.addEventListener('scroll', () => {
   let current = 'home';
-
-  for (const id of SECTION_IDS) {
-    const el = document.getElementById(id);
-    if (!el) continue;
-
-    const top = el.offsetTop - 80; // offset for fixed nav
-    if (scrollY >= top) current = id;
-  }
-
-  setActiveLink(current);
-}
-
-window.addEventListener('scroll', updateActiveSection);
-window.addEventListener('load', updateActiveSection);
-</script>
+  sections.forEach(id => {
+    const el = document.getElementByI
