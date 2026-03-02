@@ -1224,11 +1224,12 @@ async function submitForm(e) {
       const count = status[giftName] ?? 0;
 
       if (count >= max) {
-        btn.textContent = 'Fully Reserved';
-        btn.disabled = true;
-      } else if (count > 0) {
-        btn.textContent = `Reserved (${count}/${max})`;
-      }
+          btn.textContent = 'Already Reserved';
+          btn.disabled = true;
+        } else {
+          btn.textContent = 'Reserve';
+          btn.disabled = false;
+        }
     });
   } catch (err) {
     // API down → gifts still render
