@@ -1162,48 +1162,47 @@ function renderModal() {
 
 async function submitForm(e) {
   e.preventDefault();
+
   const btn = document.getElementById('submitBtn');
   btn.disabled = true;
   btn.textContent = 'Sending...';
+
   const formData = new FormData(e.target);
-  formData.append('gift_name', activeGift.name);
-  formData.append('gift_price', activeGift.price);
+
   try {
     const res = await fetch('/api/reserve', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
-    gift: activeGift.name,
-    first_name: formData.get('first_name'),
-    last_name: formData.get('last_name'),
-    email: formData.get('user_email'),
-    message: formData.get('message')
-  })
-});
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        gift: activeGift.name,
+        first_name: formData.get('first_name'),
+        last_name: formData.get('last_name'),
+        email: formData.get('user_email'),
+        message: formData.get('message')
+      })
+    });
+
     if (res.ok) {
-  isSent = true;
-  renderModal();
-  setTimeout(closeModal, 4000);
+      isSent = true;
+      renderModal();
+      markGiftReserved(activeGift.name);
+      setTimeout(closeModal, 4000);
 
-  // lock immediately on this page too
-  markGiftReserved(activeGift.name);
+    } else if (res.status === 409) {
+      alert('This gift was just reserved by someone else.');
+      closeModal();
+      markGiftReserved(activeGift.name);
 
-} else if (res.status === 409) {
-  alert('This gift was just reserved by someone else.');
-  closeModal();
-  markGiftReserved(activeGift.name);
+    } else {
+      throw new Error('Reservation failed');
+    }
 
-} else {
-  alert('Something went wrong. Please try again.');
-  btn.disabled = false;
-  btn.textContent = 'Reserve & Confirm';
-} catch {
+  } catch (err) {
     alert('Something went wrong. Please try again.');
     btn.disabled = false;
     btn.textContent = 'Reserve & Confirm';
   }
 }
-
   async function loadReservations() {
   try {
     const res = await fetch('/api/status');
@@ -1222,9 +1221,9 @@ async function submitForm(e) {
         btn.disabled = true;
       }
     });
-  } catch {
-    // If the API is temporarily unavailable, we just don't lock buttons.
-  }
+  } catch (err) {
+  // If the API is temporarily unavailable, we just don't lock buttons.
+}
 }
 
 function markGiftReserved(giftName) {
