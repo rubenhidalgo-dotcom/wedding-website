@@ -21,9 +21,7 @@
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
-
   body {
     font-family: 'Josefin Sans', sans-serif;
     background: var(--cream);
@@ -83,15 +81,30 @@
   .nav-links a:hover { color: var(--white); }
   .nav-links a.active { color: var(--white); border-bottom-color: var(--blue); }
 
+  /* MOBILE MENU BUTTON — shows "Menu" text */
   .nav-hamburger {
     display: none;
-    flex-direction: column;
-    gap: 5px;
+    align-items: center;
+    gap: 8px;
     cursor: pointer;
     padding: 8px;
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    transition: color 0.2s;
   }
-  .nav-hamburger span {
-    display: block; width: 22px; height: 1.5px; background: var(--muted); transition: 0.3s;
+  .nav-hamburger:hover { color: var(--white); }
+  .nav-hamburger .menu-icon {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .nav-hamburger .menu-icon span {
+    display: block; width: 18px; height: 1.5px; background: currentColor; transition: 0.3s;
   }
   .mobile-menu {
     display: none;
@@ -122,7 +135,7 @@
   }
 
   /* ══════════════════════════════════════
-     HERO — Option 3 editorial, blue accent
+     HERO
   ══════════════════════════════════════ */
   #home {
     position: relative;
@@ -184,15 +197,8 @@
     letter-spacing: -0.01em;
     margin-bottom: 28px;
   }
-  .hero-names em {
-    font-style: normal;
-    color: var(--blue);
-  }
-  .hero-meta {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
+  .hero-names em { font-style: normal; color: var(--blue); }
+  .hero-meta { display: flex; flex-direction: column; gap: 10px; }
   .hero-badge {
     display: inline-flex;
     align-items: center;
@@ -210,9 +216,7 @@
     color: rgba(255,255,255,0.85);
   }
   .hero-badge .dot { color: var(--blue); font-size: 6px; }
-  .hero-cta {
-    margin-top: 36px;
-  }
+  .hero-cta { margin-top: 36px; }
   .btn-primary {
     display: inline-flex;
     align-items: center;
@@ -232,17 +236,9 @@
   /* ══════════════════════════════════════
      SHARED SECTION STYLES
   ══════════════════════════════════════ */
-  section {
-    padding: 100px 0;
-  }
-  .section-inner {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 40px;
-  }
-  .section-header {
-    margin-bottom: 60px;
-  }
+  section { padding: 100px 0; }
+  .section-inner { max-width: 1000px; margin: 0 auto; padding: 0 40px; }
+  .section-header { margin-bottom: 60px; }
   .section-label {
     font-size: 9px;
     letter-spacing: 0.38em;
@@ -268,12 +264,7 @@
     line-height: 1;
   }
   .section-title em { color: var(--blue); font-style: normal; }
-  .section-rule {
-    width: 48px;
-    height: 1px;
-    background: var(--blue);
-    margin-top: 20px;
-  }
+  .section-rule { width: 48px; height: 1px; background: var(--blue); margin-top: 20px; }
 
   /* ══════════════════════════════════════
      GETTING THERE
@@ -297,34 +288,10 @@
     width: 3px; height: 40px;
     background: var(--blue);
   }
-  .location-card-num {
-    font-size: 9px;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--blue);
-    margin-bottom: 12px;
-  }
-  .location-card h3 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 24px;
-    font-style: italic;
-    color: var(--ink);
-    margin-bottom: 16px;
-  }
-  .location-card p {
-    font-size: 13px;
-    color: var(--muted);
-    letter-spacing: 0.04em;
-    line-height: 1.7;
-    margin-bottom: 4px;
-  }
-  .location-card .venue-name {
-    font-size: 14px;
-    color: var(--ink-soft);
-    font-weight: 400;
-    margin-bottom: 8px;
-    letter-spacing: 0.05em;
-  }
+  .location-card-num { font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--blue); margin-bottom: 12px; }
+  .location-card h3 { font-family: 'DM Serif Display', serif; font-size: 24px; font-style: italic; color: var(--ink); margin-bottom: 16px; }
+  .location-card p { font-size: 13px; color: var(--muted); letter-spacing: 0.04em; line-height: 1.7; margin-bottom: 4px; }
+  .location-card .venue-name { font-size: 14px; color: var(--ink-soft); font-weight: 400; margin-bottom: 8px; letter-spacing: 0.05em; }
   .btn-outline {
     display: inline-flex;
     align-items: center;
@@ -340,69 +307,19 @@
     transition: background 0.2s, color 0.2s;
   }
   .btn-outline:hover { background: var(--blue); color: var(--white); }
-
-  .parking-list {
-    margin-top: 48px;
-    border-top: 1px solid var(--warm-mid);
-    padding-top: 48px;
-  }
-  .parking-list h3 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 28px;
-    font-style: italic;
-    color: var(--ink);
-    margin-bottom: 24px;
-  }
-  .parking-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 16px 0;
-    border-bottom: 1px solid var(--warm-mid);
-  }
-  .parking-item-name {
-    font-size: 13px;
-    color: var(--ink);
-    font-weight: 500;
-    letter-spacing: 0.05em;
-  }
-  .parking-item-note {
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.05em;
-    margin-top: 3px;
-  }
-  .parking-item a {
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    color: var(--blue);
-    text-decoration: none;
-    text-transform: uppercase;
-    white-space: nowrap;
-    margin-left: 16px;
-    padding-top: 2px;
-  }
-  .notice-bar {
-    background: var(--blue-pale);
-    border-left: 3px solid var(--blue);
-    padding: 14px 20px;
-    margin-top: 24px;
-  }
-  .notice-bar p {
-    font-size: 12px;
-    color: var(--blue-deep);
-    letter-spacing: 0.04em;
-    line-height: 1.6;
-  }
+  .parking-list { margin-top: 48px; border-top: 1px solid var(--warm-mid); padding-top: 48px; }
+  .parking-list h3 { font-family: 'DM Serif Display', serif; font-size: 28px; font-style: italic; color: var(--ink); margin-bottom: 24px; }
+  .parking-item { display: flex; justify-content: space-between; align-items: flex-start; padding: 16px 0; border-bottom: 1px solid var(--warm-mid); }
+  .parking-item-name { font-size: 13px; color: var(--ink); font-weight: 500; letter-spacing: 0.05em; }
+  .parking-item-note { font-size: 11px; color: var(--muted); letter-spacing: 0.05em; margin-top: 3px; }
+  .parking-item a { font-size: 10px; letter-spacing: 0.15em; color: var(--blue); text-decoration: none; text-transform: uppercase; white-space: nowrap; margin-left: 16px; padding-top: 2px; }
+  .notice-bar { background: var(--blue-pale); border-left: 3px solid var(--blue); padding: 14px 20px; margin-top: 24px; }
+  .notice-bar p { font-size: 12px; color: var(--blue-deep); letter-spacing: 0.04em; line-height: 1.6; }
 
   /* ══════════════════════════════════════
-     SCHEDULE — Option 2 golden card style
+     SCHEDULE
   ══════════════════════════════════════ */
-  #schedule {
-    background: #2d2416;
-    position: relative;
-    overflow: hidden;
-  }
+  #schedule { background: #2d2416; position: relative; overflow: hidden; }
   #schedule::before {
     content: '';
     position: absolute;
@@ -415,15 +332,8 @@
   #schedule .section-title { color: #fdf6e8; }
   #schedule .section-title em { color: var(--gold); }
   #schedule .section-rule { background: var(--gold); }
-
-  .schedule-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-top: 8px;
-  }
+  .schedule-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 8px; }
   @media (max-width: 600px) { .schedule-grid { grid-template-columns: 1fr; } }
-
   .schedule-card {
     background: rgba(255,255,255,0.04);
     border: 1px solid rgba(196,149,106,0.2);
@@ -432,124 +342,34 @@
     position: relative;
     transition: background 0.2s, border-color 0.2s;
   }
-  .schedule-card:hover {
-    background: rgba(196,149,106,0.07);
-    border-color: rgba(196,149,106,0.4);
-  }
-  .schedule-card-time {
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 10px;
-  }
-  .schedule-card-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: 22px;
-    font-style: italic;
-    color: #fdf6e8;
-    margin-bottom: 8px;
-    line-height: 1.1;
-  }
-  .schedule-card-desc {
-    font-size: 12px;
-    color: rgba(253,246,232,0.55);
-    letter-spacing: 0.04em;
-    line-height: 1.65;
-  }
-  .schedule-card-num {
-    position: absolute;
-    top: 20px; right: 20px;
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    color: rgba(196,149,106,0.3);
-    font-weight: 300;
-  }
-
-  .dress-code {
-    margin-top: 40px;
-    border-top: 1px solid rgba(196,149,106,0.15);
-    padding-top: 32px;
-    text-align: center;
-  }
-  .dress-code p {
-    font-size: 13px;
-    color: rgba(253,246,232,0.6);
-    letter-spacing: 0.08em;
-  }
+  .schedule-card:hover { background: rgba(196,149,106,0.07); border-color: rgba(196,149,106,0.4); }
+  .schedule-card-time { font-size: 11px; letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
+  .schedule-card-title { font-family: 'DM Serif Display', serif; font-size: 22px; font-style: italic; color: #fdf6e8; margin-bottom: 8px; line-height: 1.1; }
+  .schedule-card-desc { font-size: 12px; color: rgba(253,246,232,0.55); letter-spacing: 0.04em; line-height: 1.65; }
+  .schedule-card-num { position: absolute; top: 20px; right: 20px; font-size: 11px; letter-spacing: 0.15em; color: rgba(196,149,106,0.3); font-weight: 300; }
+  .dress-code { margin-top: 40px; border-top: 1px solid rgba(196,149,106,0.15); padding-top: 32px; text-align: center; }
+  .dress-code p { font-size: 13px; color: rgba(253,246,232,0.6); letter-spacing: 0.08em; }
   .dress-code strong { color: var(--gold); font-weight: 500; }
 
   /* ══════════════════════════════════════
      ACCOMMODATIONS
   ══════════════════════════════════════ */
   #accommodations { background: var(--cream); }
-  .accommodations-intro {
-    font-size: 14px;
-    color: var(--muted);
-    letter-spacing: 0.05em;
-    line-height: 1.8;
-    margin-bottom: 48px;
-    max-width: 560px;
-  }
-  .accom-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 0;
-    border: 1px solid var(--warm-mid);
-  }
-  .accom-item {
-    padding: 24px 28px;
-    border-bottom: 1px solid var(--warm-mid);
-    border-right: 1px solid var(--warm-mid);
-    transition: background 0.2s;
-  }
+  .accommodations-intro { font-size: 14px; color: var(--muted); letter-spacing: 0.05em; line-height: 1.8; margin-bottom: 48px; max-width: 560px; }
+  .accom-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0; border: 1px solid var(--warm-mid); }
+  .accom-item { padding: 24px 28px; border-bottom: 1px solid var(--warm-mid); border-right: 1px solid var(--warm-mid); transition: background 0.2s; }
   .accom-item:hover { background: var(--white); }
-  .accom-name {
-    font-family: 'DM Serif Display', serif;
-    font-size: 16px;
-    font-style: italic;
-    color: var(--ink);
-    margin-bottom: 6px;
-  }
-  .accom-addr {
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.03em;
-    line-height: 1.5;
-    margin-bottom: 6px;
-  }
-  .accom-item a {
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    color: var(--blue);
-    text-decoration: none;
-    text-transform: uppercase;
-    display: block;
-  }
-  .accom-phone {
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.04em;
-    margin-top: 3px;
-  }
+  .accom-name { font-family: 'DM Serif Display', serif; font-size: 16px; font-style: italic; color: var(--ink); margin-bottom: 6px; }
+  .accom-addr { font-size: 11px; color: var(--muted); letter-spacing: 0.03em; line-height: 1.5; margin-bottom: 6px; }
+  .accom-item a { font-size: 10px; letter-spacing: 0.15em; color: var(--blue); text-decoration: none; text-transform: uppercase; display: block; }
+  .accom-phone { font-size: 11px; color: var(--muted); letter-spacing: 0.04em; margin-top: 3px; }
 
   /* ══════════════════════════════════════
      REGISTRY
   ══════════════════════════════════════ */
   #gifts { background: var(--white); }
-  .registry-intro {
-    font-size: 14px;
-    color: var(--muted);
-    letter-spacing: 0.05em;
-    line-height: 1.8;
-    max-width: 580px;
-    margin-bottom: 56px;
-  }
-  .gifts-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 32px 24px;
-  }
+  .registry-intro { font-size: 14px; color: var(--muted); letter-spacing: 0.05em; line-height: 1.8; max-width: 580px; margin-bottom: 56px; }
+  .gifts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 32px 24px; }
   .gift-card { display: flex; flex-direction: column; }
   .gift-img-wrap {
     aspect-ratio: 5/6;
@@ -564,12 +384,7 @@
     transition: border-color 0.2s;
   }
   .gift-card:hover .gift-img-wrap { border-color: var(--blue-pale); }
-  .gift-img-wrap img {
-    width: 100%; height: 100%;
-    object-fit: contain;
-    mix-blend-mode: multiply;
-    transition: transform 0.3s;
-  }
+  .gift-img-wrap img { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; transition: transform 0.3s; }
   .gift-card:hover .gift-img-wrap img { transform: scale(1.04); }
   .gift-reserve-btn {
     position: absolute;
@@ -586,36 +401,118 @@
   }
   .gift-reserve-btn:hover { background: var(--blue-deep); }
   .gift-info { padding: 12px 2px 0; }
-  .gift-price {
-    font-family: 'DM Serif Display', serif;
-    font-size: 16px;
-    color: var(--ink);
-  }
-  .gift-brand {
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    color: var(--muted);
-    text-transform: uppercase;
-    margin: 3px 0;
-  }
-  .gift-name {
-    font-size: 12px;
-    color: var(--ink-soft);
-    line-height: 1.4;
-  }
-  .gift-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    color: var(--blue);
-    text-decoration: none;
-    text-transform: uppercase;
-    margin-top: 6px;
-    transition: color 0.2s;
-  }
+  .gift-price { font-family: 'DM Serif Display', serif; font-size: 16px; color: var(--ink); }
+  .gift-brand { font-size: 10px; letter-spacing: 0.12em; color: var(--muted); text-transform: uppercase; margin: 3px 0; }
+  .gift-name { font-size: 12px; color: var(--ink-soft); line-height: 1.4; }
+  .gift-link { display: inline-flex; align-items: center; gap: 4px; font-size: 10px; letter-spacing: 0.12em; color: var(--blue); text-decoration: none; text-transform: uppercase; margin-top: 6px; transition: color 0.2s; }
   .gift-link:hover { color: var(--blue-deep); }
+
+  /* ══════════════════════════════════════
+     CONTACT SECTION
+  ══════════════════════════════════════ */
+  #contact { background: var(--cream); }
+  .contact-intro { font-size: 14px; color: var(--muted); letter-spacing: 0.05em; line-height: 1.8; max-width: 560px; margin-bottom: 48px; }
+  .contact-form-wrap {
+    max-width: 640px;
+    border: 1px solid var(--warm-mid);
+    padding: 48px;
+    background: var(--white);
+    position: relative;
+  }
+  .contact-form-wrap::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 60px;
+    background: var(--blue);
+  }
+  .contact-field-label {
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 6px;
+  }
+  .contact-field-group { margin-bottom: 16px; }
+  .contact-input {
+    width: 100%;
+    border: 1px solid var(--warm-mid);
+    padding: 12px 14px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    color: var(--ink);
+    background: var(--cream);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .contact-input:focus { border-color: var(--blue); background: var(--white); }
+  .contact-textarea {
+    width: 100%;
+    border: 1px solid var(--warm-mid);
+    padding: 12px 14px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    color: var(--ink);
+    background: var(--cream);
+    resize: vertical;
+    min-height: 120px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .contact-textarea:focus { border-color: var(--blue); background: var(--white); }
+  .contact-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  @media (max-width: 500px) { .contact-row { grid-template-columns: 1fr; } }
+  .contact-file-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 1px dashed var(--warm-mid);
+    padding: 16px 20px;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    background: var(--cream);
+  }
+  .contact-file-label:hover { border-color: var(--blue); background: var(--white); }
+  .contact-file-label input { display: none; }
+  .contact-file-icon { color: var(--blue); font-size: 18px; }
+  .contact-file-text { font-size: 11px; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase; }
+  .contact-file-name { font-size: 11px; color: var(--blue); margin-top: 8px; letter-spacing: 0.05em; }
+  .contact-submit {
+    margin-top: 24px;
+    width: 100%;
+    background: var(--blue);
+    color: var(--white);
+    border: none;
+    padding: 15px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .contact-submit:hover { background: var(--blue-deep); }
+  .contact-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+  .contact-success {
+    text-align: center;
+    padding: 48px 24px;
+  }
+  .contact-success-icon {
+    width: 56px; height: 56px;
+    background: #e8f4e8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 24px;
+    color: #4a8a4a;
+  }
+  .contact-success h3 { font-family: 'DM Serif Display', serif; font-size: 28px; font-style: italic; color: var(--ink); margin-bottom: 8px; }
+  .contact-success p { font-size: 12px; color: var(--muted); letter-spacing: 0.05em; line-height: 1.7; }
 
   /* ══════════════════════════════════════
      MODAL
@@ -632,225 +529,47 @@
     padding: 24px;
   }
   .modal-overlay.open { display: flex; }
-  .modal {
-    background: var(--white);
-    width: 100%;
-    max-width: 640px;
-    position: relative;
-    animation: modalIn 0.25s ease;
-  }
-  @keyframes modalIn {
-    from { opacity: 0; transform: translateY(16px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  .modal-close {
-    position: absolute;
-    top: 16px; right: 16px;
-    background: none; border: none;
-    font-size: 18px; cursor: pointer;
-    color: var(--muted);
-    width: 32px; height: 32px;
-    display: flex; align-items: center; justify-content: center;
-    transition: color 0.2s;
-  }
+  .modal { background: var(--white); width: 100%; max-width: 640px; position: relative; animation: modalIn 0.25s ease; }
+  @keyframes modalIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  .modal-close { position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 18px; cursor: pointer; color: var(--muted); width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; transition: color 0.2s; }
   .modal-close:hover { color: var(--ink); }
   .modal-inner { padding: 40px; }
-  .modal-product {
-    display: flex;
-    gap: 24px;
-    padding-bottom: 28px;
-    margin-bottom: 28px;
-    border-bottom: 1px solid var(--warm-mid);
-  }
-  .modal-img {
-    width: 120px;
-    height: 140px;
-    background: var(--cream);
-    border: 1px solid var(--warm-mid);
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 12px;
-  }
+  .modal-product { display: flex; gap: 24px; padding-bottom: 28px; margin-bottom: 28px; border-bottom: 1px solid var(--warm-mid); }
+  .modal-img { width: 120px; height: 140px; background: var(--cream); border: 1px solid var(--warm-mid); flex-shrink: 0; display: flex; align-items: center; justify-content: center; padding: 12px; }
   .modal-img img { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; }
   .modal-product-info { flex: 1; }
-  .modal-product-name {
-    font-family: 'DM Serif Display', serif;
-    font-size: 22px;
-    font-style: italic;
-    color: var(--ink);
-    line-height: 1.2;
-    margin-bottom: 6px;
-  }
-  .modal-product-brand {
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--blue);
-    margin-bottom: 8px;
-  }
-  .modal-product-price {
-    font-family: 'DM Serif Display', serif;
-    font-size: 20px;
-    color: var(--ink-soft);
-    margin-bottom: 12px;
-  }
-  .modal-product-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 10px;
-    letter-spacing: 0.18em;
-    color: var(--blue);
-    text-decoration: none;
-    text-transform: uppercase;
-    transition: color 0.2s;
-  }
+  .modal-product-name { font-family: 'DM Serif Display', serif; font-size: 22px; font-style: italic; color: var(--ink); line-height: 1.2; margin-bottom: 6px; }
+  .modal-product-brand { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blue); margin-bottom: 8px; }
+  .modal-product-price { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--ink-soft); margin-bottom: 12px; }
+  .modal-product-link { display: inline-flex; align-items: center; gap: 6px; font-size: 10px; letter-spacing: 0.18em; color: var(--blue); text-decoration: none; text-transform: uppercase; transition: color 0.2s; }
   .modal-product-link:hover { color: var(--blue-deep); }
-  .modal-form-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: 20px;
-    font-style: italic;
-    color: var(--ink);
-    margin-bottom: 6px;
-  }
-  .modal-form-desc {
-    font-size: 12px;
-    color: var(--muted);
-    line-height: 1.7;
-    letter-spacing: 0.03em;
-    margin-bottom: 20px;
-  }
+  .modal-form-title { font-family: 'DM Serif Display', serif; font-size: 20px; font-style: italic; color: var(--ink); margin-bottom: 6px; }
+  .modal-form-desc { font-size: 12px; color: var(--muted); line-height: 1.7; letter-spacing: 0.03em; margin-bottom: 20px; }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
-  .modal-input {
-    width: 100%;
-    border: 1px solid var(--warm-mid);
-    padding: 12px 14px;
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 12px;
-    letter-spacing: 0.05em;
-    color: var(--ink);
-    background: var(--cream);
-    outline: none;
-    transition: border-color 0.2s;
-  }
+  .modal-input { width: 100%; border: 1px solid var(--warm-mid); padding: 12px 14px; font-family: 'Josefin Sans', sans-serif; font-size: 12px; letter-spacing: 0.05em; color: var(--ink); background: var(--cream); outline: none; transition: border-color 0.2s; }
   .modal-input:focus { border-color: var(--blue); background: var(--white); }
-  .modal-textarea {
-    width: 100%;
-    border: 1px solid var(--warm-mid);
-    padding: 12px 14px;
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 12px;
-    letter-spacing: 0.05em;
-    color: var(--ink);
-    background: var(--cream);
-    resize: none;
-    outline: none;
-    transition: border-color 0.2s;
-    margin-bottom: 16px;
-    display: block;
-  }
+  .modal-textarea { width: 100%; border: 1px solid var(--warm-mid); padding: 12px 14px; font-family: 'Josefin Sans', sans-serif; font-size: 12px; letter-spacing: 0.05em; color: var(--ink); background: var(--cream); resize: none; outline: none; transition: border-color 0.2s; margin-bottom: 16px; display: block; }
   .modal-textarea:focus { border-color: var(--blue); background: var(--white); }
-  .btn-submit {
-    width: 100%;
-    background: var(--blue);
-    color: var(--white);
-    border: none;
-    padding: 15px;
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 10px;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
+  .btn-submit { width: 100%; background: var(--blue); color: var(--white); border: none; padding: 15px; font-family: 'Josefin Sans', sans-serif; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }
   .btn-submit:hover { background: var(--blue-deep); }
   .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
-  .modal-success {
-    text-align: center;
-    padding: 48px 24px;
-  }
-  .modal-success-icon {
-    width: 56px; height: 56px;
-    background: #e8f4e8;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 20px;
-    font-size: 24px;
-    color: #4a8a4a;
-  }
-  .modal-success h3 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 28px;
-    font-style: italic;
-    color: var(--ink);
-    margin-bottom: 8px;
-  }
-  .modal-success p {
-    font-size: 12px;
-    color: var(--muted);
-    letter-spacing: 0.05em;
-    line-height: 1.7;
-  }
+  .modal-success { text-align: center; padding: 48px 24px; }
+  .modal-success-icon { width: 56px; height: 56px; background: #e8f4e8; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 24px; color: #4a8a4a; }
+  .modal-success h3 { font-family: 'DM Serif Display', serif; font-size: 28px; font-style: italic; color: var(--ink); margin-bottom: 8px; }
+  .modal-success p { font-size: 12px; color: var(--muted); letter-spacing: 0.05em; line-height: 1.7; }
 
   /* ══════════════════════════════════════
      FOOTER
   ══════════════════════════════════════ */
-  footer {
-    background: var(--ink);
-    padding: 64px 40px;
-    text-align: center;
-  }
-  .footer-names {
-    font-family: 'DM Serif Display', serif;
-    font-size: 36px;
-    font-style: italic;
-    color: var(--white);
-    margin-bottom: 8px;
-  }
+  footer { background: var(--ink); padding: 64px 40px; text-align: center; }
+  .footer-names { font-family: 'DM Serif Display', serif; font-size: 36px; font-style: italic; color: var(--white); margin-bottom: 8px; }
   .footer-names em { color: var(--blue); font-style: normal; }
-  .footer-date {
-    font-size: 10px;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 20px;
-  }
-  .footer-rule {
-    width: 32px;
-    height: 1px;
-    background: var(--blue);
-    margin: 0 auto 20px;
-  }
-  .footer-tagline {
-    font-size: 12px;
-    color: rgba(255,255,255,0.35);
-    letter-spacing: 0.12em;
-  }
-
-  /* Add these to your existing CSS */
-
-.footer-contact {
-  margin-top: 16px; /* Adds breathing room below the tagline */
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  color: rgba(255, 255, 255, 0.35); /* Matches your tagline opacity */
-}
-
-.footer-contact a {
-  color: var(--blue); /* Uses your custom blue from 'Ruben' */
-  text-decoration: none; /* Removes the ugly underline */
-  transition: opacity 0.2s ease;
-  font-weight: 500;
-}
-
-.footer-contact a:hover {
-  opacity: 0.7; /* Gives a subtle "clickable" feel when hovering */
-  text-decoration: underline; /* Optional: adds a clean underline only on hover */
-}
+  .footer-date { font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; }
+  .footer-rule { width: 32px; height: 1px; background: var(--blue); margin: 0 auto 20px; }
+  .footer-tagline { font-size: 12px; color: rgba(255,255,255,0.35); letter-spacing: 0.12em; }
+  .footer-contact { margin-top: 16px; font-size: 11px; letter-spacing: 0.1em; color: rgba(255,255,255,0.35); }
+  .footer-contact a { color: var(--blue); text-decoration: none; transition: opacity 0.2s ease; font-weight: 500; }
+  .footer-contact a:hover { opacity: 0.7; text-decoration: underline; }
 </style>
 </head>
 <body>
@@ -865,10 +584,13 @@
       <a href="#accommodations">Accommodation</a>
       <a href="#schedule">Schedule</a>
       <a href="#gifts">Registry</a>
+      <a href="#contact">Contact</a>
     </div>
-    <div class="nav-hamburger" onclick="toggleMenu()" id="hamburger">
-      <span></span><span></span><span></span>
-    </div>
+    <!-- CHANGE 3: "Menu" text instead of 3 lines -->
+    <button class="nav-hamburger" onclick="toggleMenu()" id="hamburger" aria-label="Toggle menu">
+      <div class="menu-icon"><span></span><span></span><span></span></div>
+      Menu
+    </button>
   </div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
@@ -877,6 +599,7 @@
   <a href="#accommodations" onclick="toggleMenu()">Accommodation</a>
   <a href="#schedule" onclick="toggleMenu()">Schedule</a>
   <a href="#gifts" onclick="toggleMenu()">Registry</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
 </div>
 
 <!-- HERO -->
@@ -927,28 +650,18 @@
         <a href="https://www.google.com/maps/search/?api=1&query=Domaine+des+Remans+Lavigny" target="_blank" class="btn-outline">Open in Maps →</a>
       </div>
     </div>
-
     <div class="parking-list">
       <h3>Parking &amp; Arrival</h3>
       <div class="parking-item">
-        <div>
-          <div class="parking-item-name">At the Church</div>
-          <div class="parking-item-note">15 spots available</div>
-        </div>
+        <div><div class="parking-item-name">At the Church</div><div class="parking-item-note">15 spots available</div></div>
         <a href="https://maps.google.com/?q=Eglise+Evangélique+Les+Amandiers+Lavigny" target="_blank">View on Maps →</a>
       </div>
       <div class="parking-item">
-        <div>
-          <div class="parking-item-name">Domaine des Remans</div>
-          <div class="parking-item-note">10 spots available</div>
-        </div>
+        <div><div class="parking-item-name">Domaine des Remans</div><div class="parking-item-note">10 spots available</div></div>
         <a href="https://maps.google.com/?q=Domaine+des+Remans+Lavigny" target="_blank">View on Maps →</a>
       </div>
       <div class="parking-item">
-        <div>
-          <div class="parking-item-name">At the School</div>
-          <div class="parking-item-note">Blue Disk zone (max 3 hours)</div>
-        </div>
+        <div><div class="parking-item-name">At the School</div><div class="parking-item-note">Blue Disk zone (max 3 hours)</div></div>
         <a href="https://www.google.com/maps?q=place_id:ChIJV5JX8m1IjEcR3aOgEnWAo7E" target="_blank">View on Maps →</a>
       </div>
       <div class="notice-bar">
@@ -967,30 +680,10 @@
       <div class="section-rule"></div>
     </div>
     <div class="schedule-grid">
-      <div class="schedule-card">
-        <div class="schedule-card-num">01</div>
-        <div class="schedule-card-time">13:30</div>
-        <div class="schedule-card-title">The Ceremony</div>
-        <div class="schedule-card-desc">We exchange our vows at Les Amandiers.</div>
-      </div>
-      <div class="schedule-card">
-        <div class="schedule-card-num">02</div>
-        <div class="schedule-card-time">14:30</div>
-        <div class="schedule-card-title">Garden Apéro</div>
-        <div class="schedule-card-desc">Drinks, hors d'oeuvres, and photos with a stunning lake view.</div>
-      </div>
-      <div class="schedule-card">
-        <div class="schedule-card-num">03</div>
-        <div class="schedule-card-time">16:30</div>
-        <div class="schedule-card-title">Drinks at the Domaine</div>
-        <div class="schedule-card-desc">Toasts overlooking the vineyards and the lake.</div>
-      </div>
-      <div class="schedule-card">
-        <div class="schedule-card-num">04</div>
-        <div class="schedule-card-time">18:00</div>
-        <div class="schedule-card-title">Dinner & Reception</div>
-        <div class="schedule-card-desc">A cozy evening of dining, speeches, and celebration.</div>
-      </div>
+      <div class="schedule-card"><div class="schedule-card-num">01</div><div class="schedule-card-time">13:30</div><div class="schedule-card-title">The Ceremony</div><div class="schedule-card-desc">We exchange our vows at Les Amandiers.</div></div>
+      <div class="schedule-card"><div class="schedule-card-num">02</div><div class="schedule-card-time">14:30</div><div class="schedule-card-title">Garden Apéro</div><div class="schedule-card-desc">Drinks, hors d'oeuvres, and photos with a stunning lake view.</div></div>
+      <div class="schedule-card"><div class="schedule-card-num">03</div><div class="schedule-card-time">16:30</div><div class="schedule-card-title">Drinks at the Domaine</div><div class="schedule-card-desc">Toasts overlooking the vineyards and the lake.</div></div>
+      <div class="schedule-card"><div class="schedule-card-num">04</div><div class="schedule-card-time">18:00</div><div class="schedule-card-title">Dinner & Reception</div><div class="schedule-card-desc">A cozy evening of dining, speeches, and celebration.</div></div>
     </div>
     <div class="dress-code">
       <p><strong>Dress Code:</strong> We invite you to wear your favourite outfit to celebrate with us!</p>
@@ -1037,6 +730,52 @@
   </div>
 </section>
 
+<!-- CONTACT SECTION -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-label">Get in touch</div>
+      <h2 class="section-title">Contact <em>Us</em></h2>
+      <div class="section-rule"></div>
+    </div>
+    <p class="contact-intro">Have a question, a special request, or just want to say hello? We'd love to hear from you.</p>
+    <div class="contact-form-wrap" id="contactFormWrap">
+      <div class="contact-row">
+        <div class="contact-field-group">
+          <label class="contact-field-label" for="c-first">First Name</label>
+          <input class="contact-input" id="c-first" type="text" placeholder="Your first name" required>
+        </div>
+        <div class="contact-field-group">
+          <label class="contact-field-label" for="c-last">Last Name</label>
+          <input class="contact-input" id="c-last" type="text" placeholder="Your last name" required>
+        </div>
+      </div>
+      <div class="contact-field-group">
+        <label class="contact-field-label" for="c-email">Email Address</label>
+        <input class="contact-input" id="c-email" type="email" placeholder="your@email.com" required style="width:100%">
+      </div>
+      <div class="contact-field-group" style="margin-top:16px;">
+        <label class="contact-field-label" for="c-phone">Phone Number</label>
+        <input class="contact-input" id="c-phone" type="tel" placeholder="+41 79 000 00 00" style="width:100%">
+      </div>
+      <div class="contact-field-group" style="margin-top:16px;">
+        <label class="contact-field-label" for="c-message">Message</label>
+        <textarea class="contact-textarea" id="c-message" placeholder="Your message..." required></textarea>
+      </div>
+      <div class="contact-field-group" style="margin-top:4px;">
+        <label class="contact-field-label">Attachment (optional)</label>
+        <label class="contact-file-label">
+          <input type="file" id="c-file" accept="image/*,.pdf,.doc,.docx">
+          <span class="contact-file-icon">📎</span>
+          <span class="contact-file-text">Click to attach a file</span>
+        </label>
+        <div class="contact-file-name" id="contactFileName"></div>
+      </div>
+      <button class="contact-submit" id="contactSubmitBtn" onclick="submitContact()">Send Message →</button>
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-names">Claudia &amp; <em>Ruben</em></div>
@@ -1059,7 +798,7 @@
 <script>
 const GIFTS = [
   { id:1, category:"Bedroom & Bath", brand:"Manor", name:"Kunstfell Nordelva 220x260cm", price:"CHF 80.00", image:"https://i8.amplience.net/i/manor/10003694884_01?fmt=auto&h=920&w=920", link:"https://www.manor.ch/de/p/10003694884" },
-  { id:2, category:"Bedroom & Bath", brand:"Swiss Dream by billerbeck", name:"Swiss Dream CLC 90 Pillow 65×100 cm", price:"CHF 84.40", image:"https://www.nettoshop.ch/medias/IP317405.webp?context=bWFzdGVyfGNvbW1vbl9wcm9kdWN0fDI4NTZ8aW1hZ2Uvd2VicHxZMjl0Ylc5dUwzQnliMlIxWTNRdmFEY3dMMmhrTlM4NU16ZzFNalU0Tmpnd016VXdMbmRsWW5BfDljYmM2NGU2YjI4NzcwMDQyZWNjYzliNDVjMGIwZjIxMjFhZjYwNDE5NGI0MDU5NjcwMWZmNmVlN2JhZDM5OWY", link:"https://www.nettoshop.ch/wohnen/buero-schlafzimmer/kissen-kopfkissen/swiss-dream-clc-90-kissen-65-x-100-cm/p/IP317405" },
+  { id:2, category:"Bedroom & Bath", brand:"Swiss Dream by billerbeck", name:"Swiss Dream CLC 90 Pillow 65×100 cm", price:"CHF 84.40", image:"https://www.nettoshop.ch/medias/IP317405.webp?context=bWFzdGVyfGNvbW1vbl9wcm9kdWN0fDI4NTZ8aW1hZ2Uvd2VicHxZMjl0Ylc5dUwzQnliMlIxWTNRdmFESTBMMmhrTlM4NU16ZzFNalU0Tmpnd016VXdMbmRsWW5BfDljYmM2NGU2YjI4NzcwMDQyZWNjYzliNDVjMGIwZjIxMjFhZjYwNDE5NGI0MDU5NjcwMWZmNmVlN2JhZDM5OWY", link:"https://www.nettoshop.ch/wohnen/buero-schlafzimmer/kissen-kopfkissen/swiss-dream-clc-90-kissen-65-x-100-cm/p/IP317405" },
   { id:3, price:"CHF 219", brand:"La Redoute Intérieurs", name:"Cotton Satin Duvet Cover 240×240 cm – Winterblues", category:"Bedroom & Bath", image:"https://cdn.laredoute.com/cdn-cgi/image/width=1200,height=1200,fit=pad,dpr=1/products/9/8/8/988cd9a5720e68dcb1b8b130da4d58b8.jpg", link:"https://www.laredoute.ch/en/ppdp/prod-351215346.aspx" },
   { id:4, price:"CHF 18.16", brand:"La Redoute Intérieurs", name:"Victor Plain Washed Cotton Sateen Pillow Cases 65×100 cm", category:"Bedroom & Bath", image:"https://cdn.laredoute.com/cdn-cgi/image/width=1200,height=1200,fit=pad,dpr=1/products/1/a/4/1a4c2bdf2b229db2e58e26336946b2da.jpg", link:"https://www.laredoute.ch/en/ppdp/prod-350319849.aspx" },
   { id:5, price:"CHF 45.46", brand:"La Redoute Intérieurs", name:"Victor Plain Washed Cotton Satin Fitted Sheet 160×200 cm", category:"Bedroom & Bath", image:"https://cdn.laredoute.com/cdn-cgi/image/width=1200,height=1200,fit=pad,dpr=1/products/c/0/2/c023b92129827d89cafdfeaf30ffebbd.jpg", link:"https://www.laredoute.ch/en/ppdp/prod-350319826.aspx" },
@@ -1077,7 +816,7 @@ const GIFTS = [
   { id:19, price:"CHF 99", brand:"Forge Adour", name:"Knife Set + Board", category:"Kitchen & Cooking", image:"https://static01.galaxus.com/productimages/3/5/7/5/2/6/4/6/8/8/4/4/1/8/6/7/1/1/0/d2b1fd0d-0a6b-4410-99a9-89d2fc2a5615_cropped.jpg_720.avif", link:"https://www.galaxus.ch/en/s2/product/forge-adour-planche-a-decouper-avec-couteaux-2150-cm-kitchen-knives-20526220" },
   { id:21, price:"CHF 19.95", brand:"SKÄLRYTA", name:"Teapot, clear glass, 1 l", category:"Food & Drinks", image:"https://www.ikea.com/ch/en/images/products/skaelryta-teapot-clear-glass__1450153_pe990253_s5.jpg?f=xl", link:"https://www.ikea.com/ch/en/p/skaelryta-teapot-clear-glass-40609185/" },
   { id:16, price:"CHF 44.90", brand:"BUTLERS", name:"Tasse COTTAGE 4er-Set", category:"Food & Drinks", image:"https://cdn1.home24.net/images/media/catalog/product/400x400/png/-/1/-1000479222-250219-010-IMAGE-P000000001000479222.avif", link:"https://www.home24.ch/de/tassen/" },
-  { id:23, price:"CHF 186", brand:"HP", name:"Smart Tank 7005", category:"Wellness & Lifestyle", image:"https://static01.galaxus.com/productimages/8/7/9/7/0/1/2/3/6/3/6/4/1/3/5/0/0/1/4/019958f1-51f2-7cc4-9a62-8a19e9e00e5b_720.avif", link:"https://www.galaxus.ch/de/s1/product/hp-smart-tank-7005-tintentank-farbe-drucker-16725901?offertype=retail&offerid=406802&utm_source=google&utm_medium=cpc&utm_campaign=PMax%3A+PROD_CH_SSC_Cluster_9%28C%29&campaignid=20488725263&adtype=pla&adgroupid=&adid=&dgCidg=Cj0KCQiAwYrNBhDcARIsAGo3u300rLVJieWrDzit334h3sm-H4G6zcsmYQNXpmYvG6u6fzNdwvka_1waAoqFEALw_wcB&dgCidg=Cj0KCQiAwYrNBhDcARIsAGo3u300rLVJieWrDzit334h3sm-H4G6zcsmYQNXpmYvG6u6fzNdwvka_1waAoqFEALw_wcB&gclsrc=aw.ds&gad_source=1&gad_campaignid=19965632112&gbraid=0AAAAADmCc4PebdWpQutXv9QBXpkmV_Gry&gclid=Cj0KCQiAwYrNBhDcARIsAGo3u300rLVJieWrDzit334h3sm-H4G6zcsmYQNXpmYvG6u6fzNdwvka_1waAoqFEALw_wcB" },
+  { id:23, price:"CHF 186", brand:"HP", name:"Smart Tank 7005", category:"Wellness & Lifestyle", image:"https://static01.galaxus.com/productimages/8/7/9/7/0/1/2/3/6/3/6/4/1/3/5/0/0/1/4/019958f1-51f2-7cc4-9a62-8a19e9e00e5b_720.avif", link:"https://www.galaxus.ch/de/s1/product/hp-smart-tank-7005-tintentank-farbe-drucker-16725901" },
   { id:24, price:"CHF 39.95", brand:"Various", name:"Plant", category:"Wellness & Lifestyle", image:"https://static01.galaxus.com/productimages/5/5/4/3/1/9/5/9/2/6/6/1/1/7/3/6/2/2/5/ce169145-d199-44b3-bedf-5cb1b2a6015a.jpg_720.avif", link:"https://www.galaxus.ch/en/s4/product/feey-grosse-efeutute-45-cm-freshly-repotted-plants-49568829" },
   { id:28, price:"Voucher", brand:"Galaxus", name:"Galaxus Gift Voucher", category:"Vouchers", max:5, image:"https://static01.galaxus.com/productimages/8/3/1/7/5/4/0/5/1/8/4/1/7/8/7/6/7/3/1/019c9e80-3442-740e-a4fa-0880137db8ad_720.avif", link:"https://www.galaxus.ch/de/s1/product/galaxus-digitaler-gutschein-chf-5-gutschein-4697570" },
   { id:29, price:"Voucher", brand:"Lidl", name:"Lidl Gift Card", category:"Vouchers", max:5, image:"https://www.lidl-giftcards.ch/assets/products/giftcard3.png", link:"https://www.lidl-giftcards.ch/de-ch" },
@@ -1104,7 +843,71 @@ GIFTS.forEach(g => {
 });
 
 loadReservations();
-  
+
+// ── Contact form file picker ──
+document.getElementById('c-file').addEventListener('change', function() {
+  const name = this.files[0] ? this.files[0].name : '';
+  document.getElementById('contactFileName').textContent = name ? '📄 ' + name : '';
+});
+
+// ── Contact form submit ──
+async function submitContact() {
+  const first = document.getElementById('c-first').value.trim();
+  const last  = document.getElementById('c-last').value.trim();
+  const email = document.getElementById('c-email').value.trim();
+  const phone = document.getElementById('c-phone').value.trim();
+  const msg   = document.getElementById('c-message').value.trim();
+  const file  = document.getElementById('c-file').files[0];
+
+  if (!first || !last || !email || !msg) {
+    alert('Please fill in all required fields.');
+    return;
+  }
+
+  const btn = document.getElementById('contactSubmitBtn');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+
+  // Convert file to base64 if present
+  let fileData = null;
+  let fileName = null;
+  let fileType = null;
+  if (file) {
+    fileData = await new Promise((res, rej) => {
+      const r = new FileReader();
+      r.onload = () => res(r.result.split(',')[1]);
+      r.onerror = rej;
+      r.readAsDataURL(file);
+    });
+    fileName = file.name;
+    fileType = file.type;
+  }
+
+  try {
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ first_name: first, last_name: last, email, phone, message: msg, file_data: fileData, file_name: fileName, file_type: fileType })
+    });
+
+    if (res.ok) {
+      document.getElementById('contactFormWrap').innerHTML = `
+        <div class="contact-success">
+          <div class="contact-success-icon">✓</div>
+          <h3>Message sent!</h3>
+          <p>Thank you for reaching out. We'll get back to you soon.</p>
+        </div>`;
+    } else {
+      throw new Error('Failed');
+    }
+  } catch {
+    alert('Something went wrong. Please try again or email us directly.');
+    btn.disabled = false;
+    btn.textContent = 'Send Message →';
+  }
+}
+
+// ── Gift modal ──
 let activeGift = null;
 let isSent = false;
 
@@ -1131,7 +934,7 @@ function renderModal() {
       <div class="modal-success">
         <div class="modal-success-icon">✓</div>
         <h3>Thank you!</h3>
-        <p>Your reservation for "${g.name}" has been recorded.</p>
+        <p>Your reservation for "${g.name}" has been recorded.<br>A confirmation email has been sent to you.</p>
       </div>`;
     return;
   }
@@ -1162,11 +965,9 @@ function renderModal() {
 
 async function submitForm(e) {
   e.preventDefault();
-
   const btn = document.getElementById('submitBtn');
   btn.disabled = true;
   btn.textContent = 'Sending...';
-
   const formData = new FormData(e.target);
 
   try {
@@ -1174,13 +975,16 @@ async function submitForm(e) {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-      gift: activeGift.name,
-      max: activeGift.max ?? 1,   // 👈 ADD THIS
-      first_name: formData.get('first_name'),
-      last_name: formData.get('last_name'),
-      email: formData.get('user_email'),
-      message: formData.get('message')
-    })
+        gift: activeGift.name,
+        gift_price: activeGift.price,
+        gift_link: activeGift.link,
+        gift_image: activeGift.image,
+        max: activeGift.max ?? 1,
+        first_name: formData.get('first_name'),
+        last_name: formData.get('last_name'),
+        email: formData.get('user_email'),
+        message: formData.get('message')
+      })
     });
 
     if (res.ok) {
@@ -1188,52 +992,38 @@ async function submitForm(e) {
       renderModal();
       markGiftReserved(activeGift.name);
       setTimeout(closeModal, 4000);
-
     } else if (res.status === 409) {
       alert('This gift was just reserved by someone else.');
       closeModal();
       markGiftReserved(activeGift.name);
-
     } else {
       throw new Error('Reservation failed');
     }
-
   } catch (err) {
     alert('Something went wrong. Please try again.');
     btn.disabled = false;
     btn.textContent = 'Reserve & Confirm';
   }
 }
-  async function loadReservations() {
+
+async function loadReservations() {
   try {
     const res = await fetch('/api/status');
     if (!res.ok) return;
-
-    const status = await res.json(); // { giftName: count }
-
+    const status = await res.json();
     document.querySelectorAll('.gift-card').forEach(card => {
       const nameEl = card.querySelector('.gift-name');
       const btn = card.querySelector('.gift-reserve-btn');
       if (!nameEl || !btn) return;
-
       const giftName = nameEl.textContent.trim();
       const gift = GIFTS.find(g => g.name === giftName);
       if (!gift) return;
-
       const max = gift.max ?? 1;
       const count = status[giftName] ?? 0;
-
-      if (count >= max) {
-          btn.textContent = 'Already Reserved';
-          btn.disabled = true;
-        } else {
-          btn.textContent = 'Reserve';
-          btn.disabled = false;
-        }
+      if (count >= max) { btn.textContent = 'Already Reserved'; btn.disabled = true; }
+      else { btn.textContent = 'Reserve'; btn.disabled = false; }
     });
-  } catch (err) {
-    // API down → gifts still render
-  }
+  } catch {}
 }
 
 function markGiftReserved(giftName) {
@@ -1241,7 +1031,6 @@ function markGiftReserved(giftName) {
     const nameEl = card.querySelector('.gift-name');
     const btn = card.querySelector('.gift-reserve-btn');
     if (!nameEl || !btn) return;
-
     if (nameEl.textContent.trim() === giftName.trim()) {
       btn.textContent = 'Already Reserved';
       btn.disabled = true;
@@ -1254,7 +1043,7 @@ function toggleMenu() {
 }
 
 // Active nav highlight on scroll
-const sections = ['home','location','schedule','accommodations','gifts'];
+const sections = ['home','location','schedule','accommodations','gifts','contact'];
 window.addEventListener('scroll', () => {
   let current = 'home';
   sections.forEach(id => {
@@ -1265,8 +1054,6 @@ window.addEventListener('scroll', () => {
     a.classList.toggle('active', a.getAttribute('href') === '#' + current);
   });
 });
-
-  
 </script>
 </body>
 </html>
