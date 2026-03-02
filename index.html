@@ -938,7 +938,7 @@ function renderModal() {
       </div>`;
     return;
   }
-  document.getElementById('modalContent').innerHTML = `
+  document.getElementById('modalContent').innerHTML = 
     <div class="modal-product">
       <div class="modal-img"><img src="${g.image}" alt="${g.name}"></div>
       <div class="modal-product-info">
@@ -958,9 +958,17 @@ function renderModal() {
         <input class="modal-input" name="first_name" type="text" placeholder="First Name" required>
       </div>
       <input class="modal-input" name="user_email" type="email" placeholder="Email Address" required style="width:100%;margin-bottom:12px;display:block;">
+      <select class="modal-input" name="quantity" required style="width:100%;margin-bottom:12px;display:block;">
+        <option value="" disabled selected>How many of this item would you like to reserve?</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
       <textarea class="modal-textarea" name="message" rows="3" placeholder="A short message..."></textarea>
       <button class="btn-submit" type="submit" id="submitBtn">Reserve & Confirm</button>
-    </form>`;
+    </form>;
 }
 
 async function submitForm(e) {
@@ -980,12 +988,12 @@ async function submitForm(e) {
         gift_link: activeGift.link,
         gift_image: activeGift.image,
         max: activeGift.max ?? 1,
+        quantity: Number(formData.get('quantity') || 1), // NEW
         first_name: formData.get('first_name'),
         last_name: formData.get('last_name'),
         email: formData.get('user_email'),
         message: formData.get('message')
       })
-    });
 
     if (res.ok) {
       isSent = true;
