@@ -61,10 +61,7 @@
     letter-spacing: 0.01em;
   }
   .nav-brand em { color: var(--blue); font-style: normal; }
-  .nav-links {
-    display: flex;
-    gap: 0;
-  }
+  .nav-links { display: flex; gap: 0; }
   .nav-links a {
     font-size: 9px;
     letter-spacing: 0.25em;
@@ -81,7 +78,6 @@
   .nav-links a:hover { color: var(--white); }
   .nav-links a.active { color: var(--white); border-bottom-color: var(--blue); }
 
-  /* MOBILE MENU BUTTON — shows "Menu" text */
   .nav-hamburger {
     display: none;
     align-items: center;
@@ -98,14 +94,8 @@
     transition: color 0.2s;
   }
   .nav-hamburger:hover { color: var(--white); }
-  .nav-hamburger .menu-icon {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-  .nav-hamburger .menu-icon span {
-    display: block; width: 18px; height: 1.5px; background: currentColor; transition: 0.3s;
-  }
+  .nav-hamburger .menu-icon { display: flex; flex-direction: column; gap: 4px; }
+  .nav-hamburger .menu-icon span { display: block; width: 18px; height: 1.5px; background: currentColor; transition: 0.3s; }
   .mobile-menu {
     display: none;
     position: fixed;
@@ -128,7 +118,6 @@
     transition: color 0.2s;
   }
   .mobile-menu a:hover { color: var(--white); }
-
   @media (max-width: 700px) {
     .nav-links { display: none; }
     .nav-hamburger { display: flex; }
@@ -137,12 +126,7 @@
   /* ══════════════════════════════════════
      HERO
   ══════════════════════════════════════ */
-  #home {
-    position: relative;
-    height: 100vh;
-    min-height: 600px;
-    overflow: hidden;
-  }
+  #home { position: relative; height: 100vh; min-height: 600px; overflow: hidden; }
   .hero-img {
     position: absolute;
     inset: 0;
@@ -154,12 +138,7 @@
   .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-      to right,
-      rgba(26,24,20,0.88) 0%,
-      rgba(26,24,20,0.30) 55%,
-      rgba(26,24,20,0.05) 100%
-    );
+    background: linear-gradient(to right, rgba(26,24,20,0.88) 0%, rgba(26,24,20,0.30) 55%, rgba(26,24,20,0.05) 100%);
   }
   .hero-content {
     position: relative;
@@ -181,13 +160,7 @@
     align-items: center;
     gap: 12px;
   }
-  .hero-eyebrow::before {
-    content: '';
-    display: block;
-    width: 32px;
-    height: 1px;
-    background: var(--blue);
-  }
+  .hero-eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--blue); }
   .hero-names {
     font-family: 'DM Serif Display', serif;
     font-size: clamp(64px, 9vw, 110px);
@@ -209,12 +182,7 @@
     padding: 10px 18px;
     width: fit-content;
   }
-  .hero-badge span {
-    font-size: 10px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.85);
-  }
+  .hero-badge span { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.85); }
   .hero-badge .dot { color: var(--blue); font-size: 6px; }
   .hero-cta { margin-top: 36px; }
   .btn-primary {
@@ -249,20 +217,8 @@
     align-items: center;
     gap: 12px;
   }
-  .section-label::before {
-    content: '';
-    display: block;
-    width: 24px;
-    height: 1px;
-    background: var(--blue);
-  }
-  .section-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(36px, 5vw, 56px);
-    font-style: italic;
-    color: var(--ink);
-    line-height: 1;
-  }
+  .section-label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--blue); }
+  .section-title { font-family: 'DM Serif Display', serif; font-size: clamp(36px, 5vw, 56px); font-style: italic; color: var(--ink); line-height: 1; }
   .section-title em { color: var(--blue); font-style: normal; }
   .section-rule { width: 48px; height: 1px; background: var(--blue); margin-top: 20px; }
 
@@ -270,24 +226,10 @@
      GETTING THERE
   ══════════════════════════════════════ */
   #location { background: var(--white); }
-  .location-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-  }
+  .location-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
   @media (max-width: 700px) { .location-grid { grid-template-columns: 1fr; } }
-  .location-card {
-    border: 1px solid var(--warm-mid);
-    padding: 36px;
-    position: relative;
-  }
-  .location-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 3px; height: 40px;
-    background: var(--blue);
-  }
+  .location-card { border: 1px solid var(--warm-mid); padding: 36px; position: relative; }
+  .location-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 40px; background: var(--blue); }
   .location-card-num { font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--blue); margin-bottom: 12px; }
   .location-card h3 { font-family: 'DM Serif Display', serif; font-size: 24px; font-style: italic; color: var(--ink); margin-bottom: 16px; }
   .location-card p { font-size: 13px; color: var(--muted); letter-spacing: 0.04em; line-height: 1.7; margin-bottom: 4px; }
@@ -320,13 +262,7 @@
      SCHEDULE
   ══════════════════════════════════════ */
   #schedule { background: #2d2416; position: relative; overflow: hidden; }
-  #schedule::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at 70% 50%, rgba(196,149,106,0.08) 0%, transparent 70%);
-    pointer-events: none;
-  }
+  #schedule::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 50%, rgba(196,149,106,0.08) 0%, transparent 70%); pointer-events: none; }
   #schedule .section-label { color: var(--gold); }
   #schedule .section-label::before { background: var(--gold); }
   #schedule .section-title { color: #fdf6e8; }
@@ -334,14 +270,7 @@
   #schedule .section-rule { background: var(--gold); }
   .schedule-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 8px; }
   @media (max-width: 600px) { .schedule-grid { grid-template-columns: 1fr; } }
-  .schedule-card {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(196,149,106,0.2);
-    border-left: 3px solid var(--gold);
-    padding: 28px 28px 24px;
-    position: relative;
-    transition: background 0.2s, border-color 0.2s;
-  }
+  .schedule-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(196,149,106,0.2); border-left: 3px solid var(--gold); padding: 28px 28px 24px; position: relative; transition: background 0.2s, border-color 0.2s; }
   .schedule-card:hover { background: rgba(196,149,106,0.07); border-color: rgba(196,149,106,0.4); }
   .schedule-card-time { font-size: 11px; letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
   .schedule-card-title { font-family: 'DM Serif Display', serif; font-size: 22px; font-style: italic; color: #fdf6e8; margin-bottom: 8px; line-height: 1.1; }
@@ -371,34 +300,11 @@
   .registry-intro { font-size: 14px; color: var(--muted); letter-spacing: 0.05em; line-height: 1.8; max-width: 580px; margin-bottom: 56px; }
   .gifts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 32px 24px; }
   .gift-card { display: flex; flex-direction: column; }
-  .gift-img-wrap {
-    aspect-ratio: 5/6;
-    background: var(--cream);
-    border: 1px solid var(--warm-mid);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    overflow: hidden;
-    position: relative;
-    transition: border-color 0.2s;
-  }
+  .gift-img-wrap { aspect-ratio: 5/6; background: var(--cream); border: 1px solid var(--warm-mid); display: flex; align-items: center; justify-content: center; padding: 20px; overflow: hidden; position: relative; transition: border-color 0.2s; }
   .gift-card:hover .gift-img-wrap { border-color: var(--blue-pale); }
   .gift-img-wrap img { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; transition: transform 0.3s; }
   .gift-card:hover .gift-img-wrap img { transform: scale(1.04); }
-  .gift-reserve-btn {
-    position: absolute;
-    bottom: 8px; right: 8px;
-    background: var(--ink);
-    color: var(--white);
-    font-size: 9px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    padding: 7px 12px;
-    border: none;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
+  .gift-reserve-btn { position: absolute; bottom: 8px; right: 8px; background: var(--ink); color: var(--white); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; padding: 7px 12px; border: none; cursor: pointer; transition: background 0.2s; }
   .gift-reserve-btn:hover { background: var(--blue-deep); }
   .gift-info { padding: 12px 2px 0; }
   .gift-price { font-family: 'DM Serif Display', serif; font-size: 16px; color: var(--ink); }
@@ -407,127 +313,85 @@
   .gift-link { display: inline-flex; align-items: center; gap: 4px; font-size: 10px; letter-spacing: 0.12em; color: var(--blue); text-decoration: none; text-transform: uppercase; margin-top: 6px; transition: color 0.2s; }
   .gift-link:hover { color: var(--blue-deep); }
 
+  /* ── Surprise card ── */
+  .gift-card-surprise { display: flex; flex-direction: column; }
+  .gift-surprise-wrap {
+    aspect-ratio: 5/6;
+    border: 1.5px dashed var(--blue);
+    background: linear-gradient(145deg, var(--cream) 0%, #deedf7 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.25s, border-color 0.25s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .gift-surprise-wrap::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 60% 40%, rgba(74,127,165,0.13) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .gift-surprise-wrap:hover {
+    background: linear-gradient(145deg, #d4e9f5 0%, #b8d9ed 100%);
+    border-color: var(--blue-deep);
+    transform: translateY(-2px);
+  }
+  .gift-surprise-icon { font-size: 34px; margin-bottom: 12px; display: block; }
+  .gift-surprise-title { font-family: 'DM Serif Display', serif; font-size: 18px; font-style: italic; color: var(--blue-deep); margin-bottom: 8px; line-height: 1.2; }
+  .gift-surprise-desc { font-size: 10px; letter-spacing: 0.1em; color: var(--blue); text-transform: uppercase; line-height: 1.7; margin-bottom: 14px; }
+  .gift-surprise-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--blue);
+    color: var(--white);
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 9px 18px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-family: 'Josefin Sans', sans-serif;
+  }
+  .gift-surprise-cta:hover { background: var(--blue-deep); }
+
   /* ══════════════════════════════════════
      CONTACT SECTION
   ══════════════════════════════════════ */
   #contact { background: var(--cream); }
   .contact-intro { font-size: 14px; color: var(--muted); letter-spacing: 0.05em; line-height: 1.8; max-width: 560px; margin-bottom: 48px; }
-  .contact-form-wrap {
-    max-width: 640px;
-    border: 1px solid var(--warm-mid);
-    padding: 48px;
-    background: var(--white);
-    position: relative;
-  }
-  .contact-form-wrap::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 3px; height: 60px;
-    background: var(--blue);
-  }
-  .contact-field-label {
-    font-size: 9px;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--muted);
-    display: block;
-    margin-bottom: 6px;
-  }
+  .contact-form-wrap { max-width: 640px; border: 1px solid var(--warm-mid); padding: 48px; background: var(--white); position: relative; }
+  .contact-form-wrap::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 60px; background: var(--blue); }
+  .contact-field-label { font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 6px; }
   .contact-field-group { margin-bottom: 16px; }
-  .contact-input {
-    width: 100%;
-    border: 1px solid var(--warm-mid);
-    padding: 12px 14px;
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 12px;
-    letter-spacing: 0.05em;
-    color: var(--ink);
-    background: var(--cream);
-    outline: none;
-    transition: border-color 0.2s;
-  }
+  .contact-input { width: 100%; border: 1px solid var(--warm-mid); padding: 12px 14px; font-family: 'Josefin Sans', sans-serif; font-size: 12px; letter-spacing: 0.05em; color: var(--ink); background: var(--cream); outline: none; transition: border-color 0.2s; }
   .contact-input:focus { border-color: var(--blue); background: var(--white); }
-  .contact-textarea {
-    width: 100%;
-    border: 1px solid var(--warm-mid);
-    padding: 12px 14px;
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 12px;
-    letter-spacing: 0.05em;
-    color: var(--ink);
-    background: var(--cream);
-    resize: vertical;
-    min-height: 120px;
-    outline: none;
-    transition: border-color 0.2s;
-  }
+  .contact-textarea { width: 100%; border: 1px solid var(--warm-mid); padding: 12px 14px; font-family: 'Josefin Sans', sans-serif; font-size: 12px; letter-spacing: 0.05em; color: var(--ink); background: var(--cream); resize: vertical; min-height: 120px; outline: none; transition: border-color 0.2s; }
   .contact-textarea:focus { border-color: var(--blue); background: var(--white); }
   .contact-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
   @media (max-width: 500px) { .contact-row { grid-template-columns: 1fr; } }
-  .contact-file-label {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    border: 1px dashed var(--warm-mid);
-    padding: 16px 20px;
-    cursor: pointer;
-    transition: border-color 0.2s, background 0.2s;
-    background: var(--cream);
-  }
+  .contact-file-label { display: flex; align-items: center; gap: 12px; border: 1px dashed var(--warm-mid); padding: 16px 20px; cursor: pointer; transition: border-color 0.2s, background 0.2s; background: var(--cream); }
   .contact-file-label:hover { border-color: var(--blue); background: var(--white); }
   .contact-file-label input { display: none; }
   .contact-file-icon { color: var(--blue); font-size: 18px; }
   .contact-file-text { font-size: 11px; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase; }
   .contact-file-name { font-size: 11px; color: var(--blue); margin-top: 8px; letter-spacing: 0.05em; }
-  .contact-submit {
-    margin-top: 24px;
-    width: 100%;
-    background: var(--blue);
-    color: var(--white);
-    border: none;
-    padding: 15px;
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 10px;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
+  .contact-submit { margin-top: 24px; width: 100%; background: var(--blue); color: var(--white); border: none; padding: 15px; font-family: 'Josefin Sans', sans-serif; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }
   .contact-submit:hover { background: var(--blue-deep); }
   .contact-submit:disabled { opacity: 0.6; cursor: not-allowed; }
-  .contact-success {
-    text-align: center;
-    padding: 48px 24px;
-  }
-  .contact-success-icon {
-    width: 56px; height: 56px;
-    background: #e8f4e8;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 20px;
-    font-size: 24px;
-    color: #4a8a4a;
-  }
+  .contact-success { text-align: center; padding: 48px 24px; }
+  .contact-success-icon { width: 56px; height: 56px; background: #e8f4e8; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 24px; color: #4a8a4a; }
   .contact-success h3 { font-family: 'DM Serif Display', serif; font-size: 28px; font-style: italic; color: var(--ink); margin-bottom: 8px; }
   .contact-success p { font-size: 12px; color: var(--muted); letter-spacing: 0.05em; line-height: 1.7; }
 
-  /* ══════════════════════════════════════
-     MODAL
-  ══════════════════════════════════════ */
-  .modal-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 200;
-    background: rgba(26,24,20,0.75);
-    backdrop-filter: blur(6px);
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-  }
+  .modal-overlay { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(26,24,20,0.75); backdrop-filter: blur(6px); align-items: center; justify-content: center; padding: 24px; }
   .modal-overlay.open { display: flex; }
   .modal { background: var(--white); width: 100%; max-width: 640px; position: relative; animation: modalIn 0.25s ease; }
   @keyframes modalIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
@@ -824,7 +688,7 @@ const GIFTS = [
   { id:31, price:"Gift Card", brand:"Manor", name:"Manor Gift Card", category:"Gift Cards", max:5, image:"https://i8.amplience.net/i/manor/10003323933_01?fmt=auto&h=920&w=920", link:"https://www.manor.ch/fr/p/10003323933?gad_source=1&gad_campaignid=22754821411&gbraid=0AAAAAD1sfa5DlgYhO3BsBLbUAymawuGUK&gclid=EAIaIQobChMIsrqlrMiDkwMVLJKDBx3OTwisEAQYASABEgKD8fD_BwE" },
   { id:32, price:"Gift Card", brand:"Various", name:"One4all Gift Card", category:"Gift Cards", max:5, image:"https://apis.shop.post.ch/medias/sys_master/images/h21/h12/9413163614238/380Wx380H_Default-WorkingFormat_536089/380Wx380H-Default-WorkingFormat-536089.jpg", link:"https://shop.post.ch/en/gifts-gold/gift-cards-digital-vouchers/gift-cards/giftcard-one4all-variable/p/536089" },
   { id:33, price:"Gift Card", brand:"SBB", name:"SBB Gift Card – Alpine Romance", category:"Gift Cards", max:5, image:"https://commerce.sbb.ch/media/catalog/product/cache/8589b2490af5cd6ad2ee857e826b74c0/n/g/ngw_tu_gutscheinkarte_vs_neu_mit_chip.jpg", link:"https://commerce.sbb.ch/en/voucher-pt-alpine-romance.html" }
-];
+]; 
 
 // Render gifts
 const grid = document.getElementById('giftsGrid');
@@ -846,6 +710,23 @@ GIFTS.forEach(g => {
 
 loadReservations();
 
+// ── Surprise card ──
+grid.innerHTML += `
+  <div class="gift-card-surprise">
+    <div class="gift-surprise-wrap" onclick="openSurpriseModal()">
+      <span class="gift-surprise-icon">🎁</span>
+      <div class="gift-surprise-title">Surprise Us!</div>
+      <div class="gift-surprise-desc">Have something special<br>in mind? Tell us!</div>
+      <button class="gift-surprise-cta" onclick="openSurpriseModal();event.stopPropagation()">Tell us →</button>
+    </div>
+    <div class="gift-info">
+      <div class="gift-price" style="visibility:hidden">—</div>
+      <div class="gift-brand" style="visibility:hidden">—</div>
+      <div class="gift-name">Your own surprise gift</div>
+    </div>
+  </div>`;
+
+// ── Contact form file picker ──
 // ── Contact form file picker ──
 document.getElementById('c-file').addEventListener('change', function() {
   const name = this.files[0] ? this.files[0].name : '';
@@ -860,52 +741,22 @@ async function submitContact() {
   const phone = document.getElementById('c-phone').value.trim();
   const msg   = document.getElementById('c-message').value.trim();
   const file  = document.getElementById('c-file').files[0];
-
-  if (!first || !last || !email || !msg) {
-    alert('Please fill in all required fields.');
-    return;
-  }
-
+  if (!first || !last || !email || !msg) { alert('Please fill in all required fields.'); return; }
   const btn = document.getElementById('contactSubmitBtn');
-  btn.disabled = true;
-  btn.textContent = 'Sending...';
-
-  // Convert file to base64 if present
-  let fileData = null;
-  let fileName = null;
-  let fileType = null;
+  btn.disabled = true; btn.textContent = 'Sending...';
+  let fileData = null, fileName = null, fileType = null;
   if (file) {
-    fileData = await new Promise((res, rej) => {
-      const r = new FileReader();
-      r.onload = () => res(r.result.split(',')[1]);
-      r.onerror = rej;
-      r.readAsDataURL(file);
-    });
-    fileName = file.name;
-    fileType = file.type;
+    fileData = await new Promise((res, rej) => { const r = new FileReader(); r.onload = () => res(r.result.split(',')[1]); r.onerror = rej; r.readAsDataURL(file); });
+    fileName = file.name; fileType = file.type;
   }
-
   try {
-    const res = await fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ first_name: first, last_name: last, email, phone, message: msg, file_data: fileData, file_name: fileName, file_type: fileType })
-    });
-
+    const res = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ first_name: first, last_name: last, email, phone, message: msg, file_data: fileData, file_name: fileName, file_type: fileType }) });
     if (res.ok) {
-      document.getElementById('contactFormWrap').innerHTML = `
-        <div class="contact-success">
-          <div class="contact-success-icon">✓</div>
-          <h3>Message sent!</h3>
-          <p>Thank you for reaching out. We'll get back to you soon.</p>
-        </div>`;
-    } else {
-      throw new Error('Failed');
-    }
+      document.getElementById('contactFormWrap').innerHTML = `<div class="contact-success"><div class="contact-success-icon">✓</div><h3>Message sent!</h3><p>Thank you for reaching out. We'll get back to you soon.</p></div>`;
+    } else { throw new Error('Failed'); }
   } catch {
     alert('Something went wrong. Please try again or email us directly.');
-    btn.disabled = false;
-    btn.textContent = 'Send Message →';
+    btn.disabled = false; btn.textContent = 'Send Message →';
   }
 }
 
@@ -940,7 +791,7 @@ function renderModal() {
       </div>`;
     return;
   }
-    document.getElementById('modalContent').innerHTML = `
+  document.getElementById('modalContent').innerHTML = `
     <div class="modal-product">
       <div class="modal-img"><img src="${g.image}" alt="${g.name}"></div>
       <div class="modal-product-info">
@@ -959,9 +810,7 @@ function renderModal() {
         <input class="modal-input" name="last_name" type="text" placeholder="Last Name" required>
         <input class="modal-input" name="first_name" type="text" placeholder="First Name" required>
       </div>
-
       <input class="modal-input" name="user_email" type="email" placeholder="Email Address" required style="width:100%;margin-bottom:12px;display:block;">
-
       <select class="modal-input" name="quantity" required style="width:100%;margin-bottom:12px;display:block;">
         <option value="" disabled selected>How many of this item would you like to reserve?</option>
         <option value="1">1</option>
@@ -970,20 +819,16 @@ function renderModal() {
         <option value="4">4</option>
         <option value="5">5</option>
       </select>
-
       <textarea class="modal-textarea" name="message" rows="3" placeholder="A short message..."></textarea>
       <button class="btn-submit" type="submit" id="submitBtn">Reserve & Confirm</button>
-    </form>
-  `;
+    </form>`;
 }
 
 async function submitForm(e) {
   e.preventDefault();
   const btn = document.getElementById('submitBtn');
-  btn.disabled = true;
-  btn.textContent = 'Sending...';
+  btn.disabled = true; btn.textContent = 'Sending...';
   const formData = new FormData(e.target);
-
   try {
     const res = await fetch('/api/reserve', {
       method: 'POST',
@@ -994,30 +839,21 @@ async function submitForm(e) {
         gift_link: activeGift.link,
         gift_image: activeGift.image,
         max: activeGift.max ?? 1,
-        quantity: Number(formData.get('quantity') || 1), // NEW
+        quantity: Number(formData.get('quantity') || 1),
         first_name: formData.get('first_name'),
         last_name: formData.get('last_name'),
         email: formData.get('user_email'),
         message: formData.get('message')
       })
     });
-
     if (res.ok) {
-      isSent = true;
-      renderModal();
-      markGiftReserved(activeGift.name);
-      setTimeout(closeModal, 4000);
+      isSent = true; renderModal(); markGiftReserved(activeGift.name); setTimeout(closeModal, 4000);
     } else if (res.status === 409) {
-      alert('This gift was just reserved by someone else.');
-      closeModal();
-      markGiftReserved(activeGift.name);
-    } else {
-      throw new Error('Reservation failed');
-    }
+      alert('This gift was just reserved by someone else.'); closeModal(); markGiftReserved(activeGift.name);
+    } else { throw new Error('Reservation failed'); }
   } catch (err) {
     alert('Something went wrong. Please try again.');
-    btn.disabled = false;
-    btn.textContent = 'Reserve & Confirm';
+    btn.disabled = false; btn.textContent = 'Reserve & Confirm';
   }
 }
 
@@ -1046,18 +882,72 @@ function markGiftReserved(giftName) {
     const nameEl = card.querySelector('.gift-name');
     const btn = card.querySelector('.gift-reserve-btn');
     if (!nameEl || !btn) return;
-    if (nameEl.textContent.trim() === giftName.trim()) {
-      btn.textContent = 'Already Reserved';
-      btn.disabled = true;
-    }
+    if (nameEl.textContent.trim() === giftName.trim()) { btn.textContent = 'Already Reserved'; btn.disabled = true; }
   });
+}
+
+// ── Surprise modal ──
+function openSurpriseModal() {
+  document.getElementById('modalContent').innerHTML = `
+    <div style="padding-bottom:24px;margin-bottom:24px;border-bottom:1px solid var(--warm-mid);">
+      <div style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--blue);margin-bottom:8px;">Gift Registry</div>
+      <div style="font-family:'DM Serif Display',serif;font-size:26px;font-style:italic;color:var(--ink);line-height:1.1;margin-bottom:10px;">
+        Surprise <em style="color:var(--blue);font-style:normal;">Us!</em>
+      </div>
+      <p style="font-size:12px;color:var(--muted);line-height:1.7;letter-spacing:0.03em;">
+        Have something special in mind that isn't on the list? We'd be truly touched.<br>
+        Share your idea below — <strong>only we will see it</strong>, so your surprise is safe with us.
+      </p>
+    </div>
+    <form id="surpriseForm" onsubmit="submitSurpriseForm(event)">
+      <div class="form-row">
+        <input class="modal-input" name="last_name" type="text" placeholder="Last Name" required>
+        <input class="modal-input" name="first_name" type="text" placeholder="First Name" required>
+      </div>
+      <input class="modal-input" name="user_email" type="email" placeholder="Email Address" required style="width:100%;margin-bottom:12px;display:block;">
+      <label style="font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px;">Your surprise idea</label>
+      <textarea class="modal-textarea" name="message" rows="4" placeholder="Tell us about your surprise gift idea..." required style="margin-bottom:16px;"></textarea>
+      <button class="btn-submit" type="submit" id="surpriseSubmitBtn">Send my surprise →</button>
+    </form>`;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+async function submitSurpriseForm(e) {
+  e.preventDefault();
+  const btn = document.getElementById('surpriseSubmitBtn');
+  btn.disabled = true; btn.textContent = 'Sending...';
+  const fd = new FormData(e.target);
+  try {
+    const res = await fetch('/api/surprise', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        first_name: fd.get('first_name'),
+        last_name:  fd.get('last_name'),
+        email:      fd.get('user_email'),
+        message:    fd.get('message')
+      })
+    });
+    if (res.ok) {
+      document.getElementById('modalContent').innerHTML = `
+        <div class="modal-success">
+          <div class="modal-success-icon">🎁</div>
+          <h3>How exciting!</h3>
+          <p>Your surprise idea has been safely noted — we can't wait to see what you have in store for us!</p>
+        </div>`;
+      setTimeout(closeModal, 4000);
+    } else { throw new Error(); }
+  } catch {
+    alert('Something went wrong. Please try again.');
+    btn.disabled = false; btn.textContent = 'Send my surprise →';
+  }
 }
 
 function toggleMenu() {
   document.getElementById('mobileMenu').classList.toggle('open');
 }
 
-// Active nav highlight on scroll
 const sections = ['home','location','schedule','accommodations','gifts','contact'];
 window.addEventListener('scroll', () => {
   let current = 'home';
