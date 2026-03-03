@@ -727,7 +727,6 @@ grid.innerHTML += `
   </div>`;
 
 // ── Contact form file picker ──
-// ── Contact form file picker ──
 document.getElementById('c-file').addEventListener('change', function() {
   const name = this.files[0] ? this.files[0].name : '';
   document.getElementById('contactFileName').textContent = name ? '📄 ' + name : '';
