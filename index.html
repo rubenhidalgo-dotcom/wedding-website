@@ -716,11 +716,11 @@ grid.innerHTML += `
     <div class="gift-surprise-wrap" onclick="openSurpriseModal()">
       <span class="gift-surprise-icon">🎁</span>
       <div class="gift-surprise-title">Surprise Us!</div>
-      <div class="gift-surprise-desc">Have something special<br>in mind? Tell us!</div>
-      <button class="gift-surprise-cta" onclick="openSurpriseModal();event.stopPropagation()">Tell us &#8594;</button>
+      <div class="gift-surprise-desc">Have something special<br>in mind? </div>
+      <button class="gift-surprise-cta" onclick="openSurpriseModal();event.stopPropagation()">Tell us! &#8594;</button>
     </div>
     <div class="gift-info">
-      <div class="gift-price">Your own surprise gift</div>
+      <div class="gift-price">Surprise Gift</div>
       <div class="gift-brand" style="visibility:hidden">—</div>
       <div class="gift-name" style="visibility:hidden">—</div>
     </div>`;
@@ -893,8 +893,7 @@ function openSurpriseModal() {
         Surprise <em style="color:var(--blue);font-style:normal;">Us!</em>
       </div>
       <p style="font-size:12px;color:var(--muted);line-height:1.7;letter-spacing:0.03em;">
-        Have something special in mind that isn't on the list? We'd be truly touched.<br>
-        Share your idea below — <strong>only we will see it</strong>, so your surprise is safe with us.
+        Have something special in mind that isn't on the list? We'd be truly touched.
       </p>
     </div>
     <form id="surpriseForm" onsubmit="submitSurpriseForm(event)">
@@ -904,7 +903,7 @@ function openSurpriseModal() {
       </div>
       <input class="modal-input" name="user_email" type="email" placeholder="Email Address" required style="width:100%;margin-bottom:12px;display:block;">
       <label style="font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px;">Your surprise idea</label>
-      <textarea class="modal-textarea" name="message" rows="4" placeholder="Tell us about your surprise gift idea..." required style="margin-bottom:16px;"></textarea>
+      <textarea class="modal-textarea" name="message" rows="4" placeholder="A short message..." required style="margin-bottom:16px;"></textarea>
       <button class="btn-submit" type="submit" id="surpriseSubmitBtn">Send my surprise →</button>
     </form>`;
   document.getElementById('modalOverlay').classList.add('open');
