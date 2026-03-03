@@ -720,7 +720,7 @@ grid.innerHTML += `
       <button class="gift-surprise-cta" onclick="openSurpriseModal();event.stopPropagation()">Tell us! &#8594;</button>
     </div>
     <div class="gift-info">
-      <div class="gift-price">visibility:hidden</div>
+      <div class="gift-price" style="visibility:hidden">—</div>
       <div class="gift-brand" style="visibility:hidden">—</div>
       <div class="gift-name" style="visibility:hidden">—</div>
     </div>`;
@@ -931,7 +931,7 @@ async function submitSurpriseForm(e) {
         <div class="modal-success">
           <div class="modal-success-icon">🎁</div>
           <h3>How exciting!</h3>
-          <p>Your surprise idea has been safely noted — we can't wait to see what you have in store for us!</p>
+          <p>We can't wait to see what you have in store for us!</p>
         </div>`;
       setTimeout(closeModal, 4000);
     } else { throw new Error(); }
