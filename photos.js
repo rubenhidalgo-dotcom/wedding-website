@@ -1,7 +1,7 @@
 // Cloudinary Configuration
 const CLOUDINARY = {
   // TODO: Add your Cloudinary cloud_name here (e.g., 'your-cloud-name')
-  cloudName: 'demo',
+  cloudName: 'zxbltgwk',
   // The tag applied to your wedding photos in Cloudinary to fetch them automatically
   tag: 'wedding-album',
   batchSize: 16
