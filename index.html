@@ -653,6 +653,9 @@
       <div class="section-rule"></div>
     </div>
     <div class="photos-masonry" id="photosGrid"></div>
+    <div style="text-align: center; margin-top: 40px;">
+      <button id="loadMorePhotosBtn" class="btn-primary" style="display: none;" onclick="renderNextBatch()">Load More Photos <span class="arrow">↓</span></button>
+    </div>
   </div>
 </section>
 
@@ -791,20 +794,57 @@ grid.innerHTML += `
     </div>`;
 
 // ── Photos Masonry ──
-function renderPhotos() {
-  const grid = document.getElementById('photosGrid');
-  if (!grid || typeof PHOTOS === 'undefined') return;
+let allPhotos = [];
+let currentIndex = 0;
 
-  PHOTOS.forEach(photo => {
+function buildCloudinaryUrl(publicId, version) {
+  // Base delivery URL using f_auto,q_auto,c_scale,w_1000 for optimization and responsive scaling
+  return `https://res.cloudinary.com/${CLOUDINARY.cloudName}/image/upload/f_auto,q_auto,c_scale,w_1000/v${version}/${publicId}`;
+}
+
+async function fetchPhotos() {
+  try {
+    // Attempt to fetch from Cloudinary client-side resource list by tag
+    // Requires setting the tag to 'wedding-album' and enabling client-side list in Cloudinary security settings
+    const response = await fetch(`https://res.cloudinary.com/${CLOUDINARY.cloudName}/image/list/${CLOUDINARY.tag}.json`);
+    if (response.ok) {
+      const data = await response.json();
+      allPhotos = data.resources.map(res => ({
+        url: buildCloudinaryUrl(res.public_id, res.version),
+        alt: 'Wedding Photo'
+      }));
+    } else {
+      throw new Error("Failed to fetch dynamic list, falling back.");
+    }
+  } catch (error) {
+    console.warn("Using fallback photo array:", error);
+    // Fallback if dynamic fetch fails (e.g. tag list not enabled or CORS issue)
+    allPhotos = PHOTOS_FALLBACK.map(filename => ({
+      // Filename in Cloudinary public ID usually excludes the extension in the ID,
+      // but if the fallback is just names, we construct a dummy publicId
+      url: buildCloudinaryUrl(`${CLOUDINARY.tag}/${filename.split('.')[0]}`, '1'),
+      alt: 'Wedding Photo'
+    }));
+  }
+
+  renderNextBatch();
+}
+
+function renderNextBatch() {
+  const grid = document.getElementById('photosGrid');
+  const btn = document.getElementById('loadMorePhotosBtn');
+  if (!grid || !allPhotos.length) return;
+
+  const nextIndex = Math.min(currentIndex + CLOUDINARY.batchSize, allPhotos.length);
+  const batch = allPhotos.slice(currentIndex, nextIndex);
+
+  batch.forEach(photo => {
     const item = document.createElement('div');
     item.className = 'photo-item';
 
-    // Tap to expand on mobile
     item.addEventListener('click', function(e) {
       if (window.matchMedia("(hover: none)").matches) {
-        // Toggle expanded class
         const wasExpanded = this.classList.contains('expanded');
-        // Clear all others first
         document.querySelectorAll('.photo-item').forEach(el => el.classList.remove('expanded'));
         if (!wasExpanded) {
           this.classList.add('expanded');
@@ -814,14 +854,22 @@ function renderPhotos() {
 
     const img = document.createElement('img');
     img.src = photo.url;
-    img.alt = photo.alt || 'Wedding photo';
+    img.alt = photo.alt;
     img.loading = 'lazy';
 
     item.appendChild(img);
     grid.appendChild(item);
   });
+
+  currentIndex = nextIndex;
+  if (currentIndex >= allPhotos.length) {
+    btn.style.display = 'none';
+  } else {
+    btn.style.display = 'inline-flex';
+  }
 }
-renderPhotos();
+
+fetchPhotos();
 
 // ── Contact form file picker ──
 document.getElementById('c-file').addEventListener('change', function() {
