@@ -1,7 +1,7 @@
 // Cloudinary Configuration
 const CLOUDINARY = {
   // TODO: Add your Cloudinary cloud_name here (e.g., 'your-cloud-name')
-  cloudName: 'zxbltgwk',
+  cloudName: 'demo',
   // The tag applied to your wedding photos in Cloudinary to fetch them automatically
   tag: 'wedding-album',
   batchSize: 16
@@ -123,10 +123,39 @@ const PHOTOS_FALLBACK = [
     document.body.style.overflow = '';
   }
 
+  let currentHighResLoad = null;
+
   function updateImage(src) {
+    // Instant Swap: Show the grid resolution image immediately
+    imgEl.src = src;
+
     // Upgrade resolution for full-screen view
     const highResSrc = src.replace('w_1000', 'w_1800');
-    imgEl.src = highResSrc;
+
+    // Create a new image to preload the high-res version
+    const highResImg = new Image();
+    currentHighResLoad = highResImg; // track current load to prevent race conditions
+
+    highResImg.onload = () => {
+      // Only swap if the user hasn't navigated to another image while loading
+      if (currentHighResLoad === highResImg) {
+        imgEl.src = highResSrc;
+      }
+    };
+    highResImg.src = highResSrc;
+
+    // Adjacent Preloading
+    if (currentImages.length > 1) {
+      const nextIdx = (currentIndex + 1) % currentImages.length;
+      const prevIdx = (currentIndex - 1 + currentImages.length) % currentImages.length;
+
+      const nextHighResSrc = currentImages[nextIdx].replace('w_1000', 'w_1800');
+      const prevHighResSrc = currentImages[prevIdx].replace('w_1000', 'w_1800');
+
+      // Fire and forget background preloads
+      new Image().src = nextHighResSrc;
+      new Image().src = prevHighResSrc;
+    }
   }
 
   function nextImage(e) {
@@ -152,6 +181,16 @@ const PHOTOS_FALLBACK = [
       // On mobile tap-to-expand, we only want to open lightbox if it's already expanded,
       // or we can let it open directly. Let's let it open directly as requested.
       openLightbox(target.src);
+    }
+  });
+
+  // Preload on Hover Event Delegation
+  document.addEventListener('mouseover', function(e) {
+    const target = e.target;
+    if (target.tagName === 'IMG' && target.src && target.src.includes('cloudinary.com') && target.closest('.photo-item')) {
+      const highResSrc = target.src.replace('w_1000', 'w_1800');
+      // Set the src of a new Image object to trigger the browser to fetch and cache it
+      new Image().src = highResSrc;
     }
   });
 
