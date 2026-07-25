@@ -1,0 +1,8 @@
+127.0.0.1 - - [25/Jul/2026 09:05:23] code 404, message File not found
+127.0.0.1 - - [25/Jul/2026 09:05:23] "GET /robots.txt HTTP/1.1" 404 -
+127.0.0.1 - - [25/Jul/2026 09:05:27] "GET / HTTP/1.0" 200 -
+127.0.0.1 - - [25/Jul/2026 09:06:38] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 09:06:39] "GET /photos.js HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 09:06:39] "GET /36cc8752-b767-4c0e-a1da-a14f01a1b8aa.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 09:06:39] code 404, message File not found
+127.0.0.1 - - [25/Jul/2026 09:06:39] "GET /api/status HTTP/1.1" 404 -

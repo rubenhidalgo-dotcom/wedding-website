@@ -434,6 +434,52 @@
   .footer-contact { margin-top: 16px; font-size: 11px; letter-spacing: 0.1em; color: rgba(255,255,255,0.35); }
   .footer-contact a { color: var(--blue); text-decoration: none; transition: opacity 0.2s ease; font-weight: 500; }
   .footer-contact a:hover { opacity: 0.7; text-decoration: underline; }
+
+  /* ══════════════════════════════════════
+     PHOTOS (MASONRY)
+  ══════════════════════════════════════ */
+  .photos-masonry {
+    column-count: 3;
+    column-gap: 16px;
+    margin-top: 32px;
+  }
+  @media (max-width: 900px) {
+    .photos-masonry { column-count: 2; }
+  }
+  @media (max-width: 600px) {
+    .photos-masonry { column-count: 1; }
+  }
+  .photo-item {
+    break-inside: avoid;
+    margin-bottom: 16px;
+    position: relative;
+    border-radius: 4px;
+    background: var(--warm-mid);
+    /* Set a generic placeholder height until image loads,
+       then it will adjust naturally due to column layout */
+    min-height: 100px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  .photo-item img {
+    width: 100%;
+    display: block;
+    border-radius: 4px;
+  }
+
+  @media (hover: hover) {
+    .photo-item:hover {
+      z-index: 10;
+      transform: scale(1.08);
+      box-shadow: 0 10px 30px rgba(26,24,20,0.15);
+    }
+  }
+
+  /* For mobile tap-to-expand */
+  .photo-item.expanded {
+    z-index: 10;
+    transform: scale(1.08);
+    box-shadow: 0 10px 30px rgba(26,24,20,0.15);
+  }
 </style>
 </head>
 <body>
@@ -448,6 +494,7 @@
       <a href="#accommodations">Accommodation</a>
       <a href="#schedule">Schedule</a>
       <a href="#gifts">Registry</a>
+      <a href="#photos">Photos</a>
       <a href="#contact">Contact</a>
     </div>
     <!-- CHANGE 3: "Menu" text instead of 3 lines -->
@@ -463,6 +510,7 @@
   <a href="#accommodations" onclick="toggleMenu()">Accommodation</a>
   <a href="#schedule" onclick="toggleMenu()">Schedule</a>
   <a href="#gifts" onclick="toggleMenu()">Registry</a>
+  <a href="#photos" onclick="toggleMenu()">Photos</a>
   <a href="#contact" onclick="toggleMenu()">Contact</a>
 </div>
 
@@ -596,6 +644,18 @@
   </div>
 </section>
 
+<!-- PHOTOS SECTION -->
+<section id="photos">
+  <div class="section-inner" style="max-width:1200px;">
+    <div class="section-header">
+      <div class="section-label">Memories</div>
+      <h2 class="section-title">Photo <em>Gallery</em></h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="photos-masonry" id="photosGrid"></div>
+  </div>
+</section>
+
 <!-- CONTACT SECTION -->
 <section id="contact">
   <div class="section-inner">
@@ -661,6 +721,7 @@
   </div>
 </div>
 
+<script src="photos.js"></script>
 <script>
 const GIFTS = [
   { id:1, category:"Bedroom & Bath", brand:"Manor", name:"Kunstfell Nordelva 220x260cm", price:"CHF 80.00", image:"https://i8.amplience.net/i/manor/10003694884_01?fmt=auto&h=920&w=920", link:"https://www.manor.ch/de/p/10003694884" },
@@ -728,6 +789,39 @@ grid.innerHTML += `
       <div class="gift-brand" style="visibility:hidden">—</div>
       <div class="gift-name" style="visibility:hidden">—</div>
     </div>`;
+
+// ── Photos Masonry ──
+function renderPhotos() {
+  const grid = document.getElementById('photosGrid');
+  if (!grid || typeof PHOTOS === 'undefined') return;
+
+  PHOTOS.forEach(photo => {
+    const item = document.createElement('div');
+    item.className = 'photo-item';
+
+    // Tap to expand on mobile
+    item.addEventListener('click', function(e) {
+      if (window.matchMedia("(hover: none)").matches) {
+        // Toggle expanded class
+        const wasExpanded = this.classList.contains('expanded');
+        // Clear all others first
+        document.querySelectorAll('.photo-item').forEach(el => el.classList.remove('expanded'));
+        if (!wasExpanded) {
+          this.classList.add('expanded');
+        }
+      }
+    });
+
+    const img = document.createElement('img');
+    img.src = photo.url;
+    img.alt = photo.alt || 'Wedding photo';
+    img.loading = 'lazy';
+
+    item.appendChild(img);
+    grid.appendChild(item);
+  });
+}
+renderPhotos();
 
 // ── Contact form file picker ──
 document.getElementById('c-file').addEventListener('change', function() {
@@ -948,7 +1042,7 @@ function toggleMenu() {
   document.getElementById('mobileMenu').classList.toggle('open');
 }
 
-const sections = ['home','location','schedule','accommodations','gifts','contact'];
+const sections = ['home','location','schedule','accommodations','gifts','photos','contact'];
 window.addEventListener('scroll', () => {
   let current = 'home';
   sections.forEach(id => {
